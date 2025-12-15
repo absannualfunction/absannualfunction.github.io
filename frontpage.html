@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video List</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#121212;
+      color:#fff;
+      padding:15px;
+    }
+
+    .container{
+      max-width:1000px;
+      margin:auto;
+    }
+
+    .video-list{
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+      gap:15px;
+    }
+
+    .video-card{
+      background:#1e1e1e;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 4px 12px rgba(0,0,0,0.4);
+      transition:transform 0.2s;
+    }
+
+    .video-card:hover{
+      transform:scale(1.02);
+    }
+
+    .thumb{
+      width:100%;
+      aspect-ratio:16/9;
+      background:#fcf8f8;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .thumb video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .info{
+      padding:10px;
+    }
+
+    .title{
+      font-size:16px;
+      font-weight:bold;
+      margin-bottom:5px;
+    }
+
+    .meta{
+      font-size:13px;
+      color:#aaa;
+    }
+
+    @media(max-width:600px){
+      body{padding:10px;}
+    }
+
+    img {
+      width: 100%;
+      padding-bottom: 30px;
+
+
+    }
+  </style>
+</head>
+<body>
+<img src="Annual Function.png" alt="" srcset="">
+
+<div class="container">
+  <div class="video-list">
+
+    <div class="video-card">
+      <div class="thumb">
+        <video src="Frame 1.png" muted></video>
+      </div>
+      <div class="info">
+        <div class="title">Sample Video One</div>
+        <div class="meta"></div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="thumb">
+        <video src="video2.mp4" muted></video>
+      </div>
+      <div class="info">
+        <div class="title">Sample Video Two</div>
+        <div class="meta"> </div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="thumb">
+        <video src="video3.mp4" muted></video>
+      </div>
+      <div class="info">
+        <div class="title">Sample Video Three</div>
+        <div class="meta"> </div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="thumb">
+        <video src="video3.mp4" muted></video>
+      </div>
+      <div class="info">
+        <div class="title">Sample Video Three</div>
+        <div class="meta"> </div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="thumb">
+        <video src="video3.mp4" muted></video>
+      </div>
+      <div class="info">
+        <div class="title">Sample Video Three</div>
+        <div class="meta"> </div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="thumb">
+        <video src="video3.mp4" muted></video>
+      </div>
+      <div class="info">
+        <div class="title">Sample Video Three</div>
+        <div class="meta"> </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
