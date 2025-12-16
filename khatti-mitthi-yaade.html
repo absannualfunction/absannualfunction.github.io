@@ -2,132 +2,179 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>English Video Status</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video with Credits</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial, Helvetica, sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body{
-    background:#1f1f1f;
-    color:#fff;
-    display:flex;
-    justify-content:center;
-    width:100%;
-    overflow-x:hidden;
+  min-height:100vh;
+  background:url("Frame 7.png") center/cover fixed no-repeat;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
 }
 
-/* APP CONTAINER */
-.app{
-    width:100%;
-    max-width:420px;
-    background:#222;
-    min-height:100vh;
+/* MAIN WRAPPER */
+.wrapper{
+  width:100%;
+  max-width:420px;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
 }
 
-/* HEADER */
-.header{
-    padding:14px;
-    background:#2a2a2a;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+/* VIDEO SECTION */
+.performance-title{
+  height: 100px;
+  display: flex;
+  justify-self: center;
+  padding-bottom: 10px;
 }
 
-.header h1{
-    font-size:30px;
+.video-box{
+  width:100%;
+  aspect-ratio:16/9;
+  background:#000;
+  border-radius:8px;
+  overflow:hidden;
 }
 
-.menu{
-    font-size:22px;
+.video-box video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-/* TABS */
-.tabs{
-    display:flex;
-    gap:10px;
-    padding:10px;
-    overflow-x:auto;
+/* IMAGE SCROLL */
+.image-scroll{
+  overflow-x:auto;
+  padding-bottom:8px;
 }
 
-.tabs::-webkit-scrollbar{
-    display:none;
+.image-scroll::-webkit-scrollbar{
+  height:5px;
 }
 
-.tab{
-    padding:10px 14px;
-    background:#333;
-    border-radius:6px;
-    font-size:14px;
-    white-space:nowrap;
-    opacity:0.7;
+.image-scroll::-webkit-scrollbar-thumb{
+  background:rgba(255,255,255,0.4);
+  border-radius:10px;
 }
 
-.tab.active{
-    background:#ffb36b;
-    color:#000;
-    opacity:1;
+.image-track{
+  display:flex;
+  gap:12px;
 }
 
-
-.card{
-    margin:12px;
-    background:#2c2c2c;
-    border-radius:10px;
-    overflow:hidden;
+.image-track img{
+  width:160px;
+  height:90px;
+  border-radius:6px;
+  object-fit:cover;
+  flex-shrink:0;
 }
 
-
-.thumbnail{
-    position:relative;
-    width:100%;
-    aspect-ratio:16/9;
-    background:#ffffff;
+/* CREDITS */
+.credits-box{
+  height:240px;
+  background:rgba(0,0,0,0.35);
+  border-radius:8px;
+  overflow:hidden;
+  position:relative;
 }
 
-.thumbnail img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+.credits{
+  position:absolute;
+  width:100%;
+  text-align:center;
+  padding:20px 10px;
+  animation:scrollCredits 18s linear infinite;
 }
 
-.play{
-    position:absolute;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:42px;
-    color:#462020;
-    background:rgba(0,0,0,0.3);
+.credits h3{
+  margin-bottom:12px;
+  font-size:16px;
 }
 
-
-.card-body{
-    padding:10px;
-    background:#000;
+.credits p{
+  font-size:14px;
+  margin:6px 0;
+  color:#ddd;
 }
 
-.card-title{
-    font-size:16px;
+@keyframes scrollCredits{
+  0%{top:100%;}
+  100%{top:-100%;}
+}
+
+/* TABLET */
+@media (min-width:768px){
+  .wrapper{
+    max-width:720px;
+  }
+
+  .performance-title{
+    font-size:32px;
+  }
+
+  .image-track img{
+    width:200px;
+    height:112px;
+  }
+
+  .credits-box{
+    height:300px;
+  }
+}
+
+/* LAPTOP & DESKTOP */
+@media (min-width:1024px){
+  .wrapper{
+    max-width:1200px;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    grid-template-rows:auto auto;
+    gap:24px;
+    align-items:start;
+  }
+
+  .video-section{
+    grid-column:1 / 2;
+  }
+
+  .performance-title{
     text-align:left;
+    font-size:50px;
+  }
+
+  .image-scroll{
+    grid-column:1 / 2;
+  }
+
+  .image-track img{
+    width:240px;
+    height:135px;
+  }
+
+  .credits-box{
+    grid-column:2 / 3;
+    grid-row:1 / 3;
+    height:540px;
+  
+  }
+
+  .credits{
+    animation-duration:22s;
+  }
 }
-
-
-@media (max-width:360px){
-    .header h1{
-        font-size:16px;
-    }
-    .card-title{
-        font-size:14px;
-    }
-}
-
 
 
 </style>
@@ -135,49 +182,58 @@ body{
 
 <body>
 
-<div class="app">
+<div class="wrapper">
 
-    
-    <div class="header">
-        <h1>Annual Function</h1>
-        <div class="menu">☰</div>
+  <!-- VIDEO -->
+  <div class="video-section">
+    <img  src="MAIN.png" alt="" srcset="" class="performance-title">
+    <div class="video-box">
+      <video src="1215-01_1765785004570.mp4" autoplay muted loop controls></video>
     </div>
+    <h2></h2>
+  </div>
 
-    
-    <div class="tabs">
-        <div class="tab active">All</div>
+  <!-- IMAGE SCROLL -->
+  <div class="image-scroll">
+    <div class="image-track">
+      <img src="img1.jpg">
+      <img src="img2.jpg">
+      <img src="img3.jpg">
+      <img src="img4.jpg">
+      <img src="img5.jpg">
+      <img src="img6.jpg">
+      <img src="img7.jpg">
     </div>
-
-    
-    <div class="card">
-        <div class="thumbnail">
-            <img src="">
-            <div class="play">▶</div>
-        </div>
-        <div class="card-body">
-            <div class="card-title">Performance Name</div>
-        </div>
+  </div>
+   
+  <h2>Virtual List</h2>
+  <!-- CREDITS -->
+  <div class="credits-box">
+    <div class="credits">
+      <h3>Participants</h3>
+      <p>AADESH SURDKAR</p>
+      <p>ANSHIKA INGALE</p>
+      <p>ANURA BANSAL</p>
+      <p>AVIKA CHOUDHARY</p>
+      <p>BHAVESH KUMAR</p>
+      <p>BHEVIN GOUTAM</p>
+      <p>CHAHAL PANHALKAR</p>
+      <p>CHERIKA PATEL</p>
+      <p>DEVEN MEHTA</p>
+      <p>HARGUNDEEP KAUR</p>
+      <p>JHALAK MOTWANI</p>
+      <p>MADHAVAM SHARMA</p>
+      <p>MISHTI SAHU</p>
+      <p>PRATEEK SOLANKI</p>
+      <p>ROHAN JOSHI</p>
+      <p>SHIVANSH TRIPATHI</p>
+      <p>SOHAM KUMAR</p>
+      <p>TANISHA SHAKLE</p>
+      <p>VEERA PARWANI</p>
+      <p>VAIDEHI TIWARI</p>
+      <p>AYANSH SHARMA</p>
     </div>
-
-    <div class="card">
-        <div class="thumbnail">
-            <img src="">
-            <div class="play">▶</div>
-        </div>
-        <div class="card-body">
-            <div class="card-title">Performance Name</div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="thumbnail">
-            <img src="">
-            <div class="play">▶</div>
-        </div>
-        <div class="card-body">
-            <div class="card-title">Performance Name</div>
-        </div>
-    </div>
+  </div>
 
 </div>
 
