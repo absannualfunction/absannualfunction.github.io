@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video with Credits</title>
+<title>Khatti Meethi Yaaden</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+
 
 <style>
 *{
@@ -13,16 +16,58 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
-  min-height:100vh;
-  background:#0e0e0e;
+#welcome-screen{
+  position:fixed;
+  inset:0;
+  background:#150031;
   display:flex;
   justify-content:center;
   align-items:center;
-  color:#181212;
+  z-index:9999;
+  animation:hideWelcome 1s ease forwards;
+  animation-delay:2.5s;
 }
 
-/* MAIN WRAPPER */
+.welcome-content{
+  text-align:center;
+  animation:welcomePop 2s ease forwards;
+}
+
+.welcome-content h1,
+.welcome-content p{
+  font-family: 'Allura', cursive;
+}
+
+.welcome-content h1{
+  font-size:52px;
+  color:#ffdfb3;
+  margin-bottom:14px;
+}
+
+.welcome-content p{
+  font-size:66px;
+}
+
+@keyframes welcomePop{
+  0%{ opacity:0; transform:scale(0.8); }
+  100%{ opacity:1; transform:scale(1); }
+}
+
+@keyframes hideWelcome{
+  to{ opacity:0; visibility:hidden; }
+}
+
+
+body{
+  min-height:100vh;
+  background:#150031;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+}
+
+
 .wrapper{
   width:100%;
   max-width:420px;
@@ -32,50 +77,22 @@ body{
   gap:20px;
 }
 
-/* SEARCH SECTION */
-.search-section{
+
+.school-header{
   display:flex;
   justify-content:center;
   align-items:center;
 }
 
-.search-box{
-  width:100%;
-  max-width:500px;
-  display:flex;
-  background:#fff;
-  border-radius:10px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.15);
-  overflow:hidden;
+.school-header img{
+  max-width:100%;
+  height:auto;
 }
 
-.search-box input{
-  flex:1;
-  border:none;
-  outline:none;
-  padding:14px 20px;
-  font-size:16px;
-}
 
-.search-box button{
-  border:none;
-  background:#000;
-  color:#fff;
-  padding:0 25px;
-  font-size:18px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.search-box button:hover{
-  background:#333;
-}
-
-/* VIDEO */
 .video-box{
   width:100%;
   aspect-ratio:16/9;
-  background:#000;
   border-radius:10px;
   overflow:hidden;
 }
@@ -86,18 +103,11 @@ body{
   object-fit:cover;
 }
 
-/* IMAGE SCROLL */
+
 .image-scroll{
   overflow-x:auto;
-}
+  scrollbar-width: none;
 
-.image-scroll::-webkit-scrollbar{
-  height:5px;
-}
-
-.image-scroll::-webkit-scrollbar-thumb{
-  background:rgba(0,0,0,0.4);
-  border-radius:10px;
 }
 
 .image-track{
@@ -108,121 +118,92 @@ body{
 .image-track img{
   width:160px;
   height:90px;
-  border-radius:8px;
   object-fit:cover;
+  border-radius:8px;
   flex-shrink:0;
 }
 
-/* TITLE */
+
 .participants-title{
   text-align:center;
   font-size:22px;
   font-weight:600;
-  color: bisque;
+  color:bisque;
 }
 
-/* CREDITS */
 .credits-box{
-  height:240px;
-  background:rgba(0,0,0,0.4);
-  border-radius:10px;
-  overflow:hidden;
   position:relative;
-  color:#fff;
+  height:240px;
+  background:rgba(0,0,0,0.55);
+  border-radius:12px;
+  overflow:hidden;
 }
 
-.credits{
+
+.fade{
+  position:absolute;
+  left:0;
+  right:0;
+  height:40px;
+  z-index:2;
+}
+
+.fade.top{
+  top:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+}
+
+.fade.bottom{
+  bottom:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+}
+
+
+.credits-track{
   position:absolute;
   width:100%;
-  padding:20px 10px;
-  text-align:center;
-  animation:scrollCredits 18s linear infinite;
+  animation:scrollCredits 20s linear infinite;
 }
 
-.credits h3{
-  margin-bottom:14px;
-  font-size:18px;
+.credits-content{
+  padding:30px 20px;
+  Text-align:center;
 }
 
-.credits p{
+.credits-content h3{
+  font-size:20px;
+  margin-bottom:18px;
+  color:#ffdfb3;
+}
+
+.credits-content p{
   margin:6px 0;
   font-size:14px;
+  opacity:0.9;
 }
 
 @keyframes scrollCredits{
-  from{ top:100%; }
-  to{ top:-100%; }
+  0%{ transform:translateY(0); }
+  100%{ transform:translateY(-100%); }
 }
 
-/* TABLET */
-@media (min-width:768px){
-  .wrapper{
-    max-width:720px;
-  }
-
-  .image-track img{
-    width:200px;
-    height:112px;
-  }
-
-  .credits-box{
-    height:300px;
-  }
-}
-
-/* LAPTOP & DESKTOP */
-@media (min-width:1024px){
+@media(min-width:1024px){
   .wrapper{
     max-width:1200px;
     display:grid;
     grid-template-columns:2fr 1fr;
-    grid-template-rows:auto auto auto;
     gap:26px;
-    align-items:start;
   }
 
-  .search-section{
-    grid-column:1 / -1;
-  }
-
-  .video-box{
-    grid-column:1 / 2;
-  }
-
-  .image-scroll{
-    grid-column:1 / 2;
-  }
-
-  .participants-title{
-    grid-column:1 / -1;
-  }
+  .school-header{ grid-column:1/-1; }
+  .participants-title{ grid-column:1/-1; }
 
   .credits-box{
-    grid-column:2 / 3;
-    grid-row:2 / 4;
-    height:540px;
+    height:1200px;
   }
 
-  .image-track img{
-    width:240px;
-    height:135px;
-  }
-
-  .credits{
-    animation-duration:22s;
-  }
-}
-
-/* MOBILE OPTIMIZATION */
-@media (max-width:480px){
-  .search-box input{
-    font-size:14px;
-    padding:12px 16px;
-  }
-
-  .search-box button{
-    font-size:16px;
-    padding:0 18px;
+  .credits-track{
+    animation-duration:3000s;
   }
 }
 </style>
@@ -230,62 +211,72 @@ body{
 
 <body>
 
+
+<div id="welcome-screen">
+  <div class="welcome-content">
+    <h1>Welcome to  <br>Annie Besant School</h1>
+    <p>Rewind 25</p>
+  </div>
+</div>
+
 <div class="wrapper">
 
-  <!-- SEARCH -->
-  <section class="search-section">
-    <div class="search-box">
-      <input type="text" placeholder="Search here..." />
-      <button>🔍</button>
-    </div>
-  </section>
-
-  <!-- VIDEO -->
-  <div class="video-box">
-    <video src="1216-01_1765868277917.mp4" autoplay muted loop controls></video>
+  <div class="school-header">
+    <img src="School name png - Bigg.png" alt="School Name">
   </div>
 
-  <!-- IMAGE SCROLL -->
+  <div class="video-box">
+    <video src="Videos/It Final Website.mp4" autoplay loop controls></video>
+  </div>
+<h2>Khatti Meethi Yaaden</h2>
   <div class="image-scroll">
     <div class="image-track">
-      <img src="7M8A2000.JPG">
-      <img src="7M8A2024.JPG">
-      <img src="7M8A2026.JPG">
-      <img src="img4.jpg">
-      <img src="img5.jpg">
-      <img src="img6.jpg">
-      <img src="img7.jpg">
+        <a href="ABHIVYAKTI.html"><img src="/Thumbnails/Abhivyakti.png"></a>
+      	<a href="BACHPAN KE SAPNE.html"><img src="/Thumbnails/BachpanKeSapne.png"></a>
+        <a href="ENGLISH PLAY.html"><img src="/Thumbnails/EnglishDrama.png"></a>
+        <a href="FESTIVALS OF INDIA.html"><img src="/Thumbnails/FestivalsOfIndia.png"></a>
+        <a href="GANESH VANADANA .html"><img src="/Thumbnails/GaneshSaraswatiVandana.png"></a>
+        <a href="GRAND FINALE .html"><img src="/Thumbnails/GrandFinale.png"></a>
+        <a href="GURU KA ASHIRWAD.html"><img src="/Thumbnails/HindiDrama.png"></a>
+        <a href="INCREDIBLE INDIA.html"><img src="/Thumbnails/IncredibleIndia.png"></a>
+        <a href="KHATTI MITTHI YAADE.html"><img src="/Thumbnails/KhattiMeethi.png"></a>
+        <a href="MIME.html"><img src="/Thumbnails/Mime.png"></a>
+        <a href="ORCHESTRA.html"><img src="/Thumbnails/Music.png"></a>
+        <a href="SCHOOL DAYS.html"><img src="/Thumbnails/SchoolDays.png"></a>
+        <a href="SPORTS.html"><img src="/Thumbnails/Sports.png"></a>
+        <a href="TRIBUTE TO MOTHER.html"><img src="/Thumbnails/TributeToMother.png"></a>
+        <a href="WELCOME DANCE MAGIC OF CHILDHOOD.html"><img src="/Thumbnails/Welcome.png"></a>
+        <a href="demo web .html"><img src="/Thumbnails/Mime.png"></a>
     </div>
   </div>
 
-  <!-- TITLE -->
   <h2 class="participants-title">Participants</h2>
 
-  <!-- CREDITS -->
   <div class="credits-box">
-    <div class="credits">
-      <h3>Participants</h3>
-      <p>AADESH SURDKAR</p>
-      <p>ANSHIKA INGALE</p>
-      <p>ANURA BANSAL</p>
-      <p>AVIKA CHOUDHARY</p>
-      <p>BHAVESH KUMAR</p>
-      <p>BHEVIN GOUTAM</p>
-      <p>CHAHAL PANHALKAR</p>
-      <p>CHERIKA PATEL</p>
-      <p>DEVEN MEHTA</p>
-      <p>HARGUNDEEP KAUR</p>
-      <p>JHALAK MOTWANI</p>
-      <p>MADHAVAM SHARMA</p>
-      <p>MISHTI SAHU</p>
-      <p>PRATEEK SOLANKI</p>
-      <p>ROHAN JOSHI</p>
-      <p>SHIVANSH TRIPATHI</p>
-      <p>SOHAM KUMAR</p>
-      <p>TANISHA SHAKLE</p>
-      <p>VEERA PARWANI</p>
-      <p>VAIDEHI TIWARI</p>
-      <p>AYANSH SHARMA</p>
+    <div class="fade top"></div>
+    <div class="fade bottom"></div>
+
+    <div class="credits-track">
+      <div class="credits-content">
+            <h3>Teachers</h3>
+      <p>JYOTI SHASTRI MA'AM</p>
+      <p>ANITA ANIYA MA'AM</p>
+      <p>NAGMA ANSARI MA'AM</p>
+      <p>MEGHA PINGLE MA'AM</p>
+      <p>LIPI SHARAMA MA'AM</p>
+      <h3>Team Members</h3>
+      <p>DISHA GUPTA - XII HUM</p>
+      <p>VEDANT SHARMA - XII SCI</p>
+      <p>VEDANT BHAWASAR - XII COM</p>
+      <p>AARUSH JAIN - XII SCI</p>
+      <p>SHREYA TELANG - XII SCI</p>
+      <p>PRIYANSHU PAL - XI SCI</p>
+      <p>ASHRUTI SINHA - XI SCI</p>
+      <p>SOHAM SHIVLANI - XI SCI</p>
+      <p>NISCHAL YADAV - IX B</p>
+      <p>RUDRA UPADHYAY - IX B</p>
+
+      </div>
     </div>
   </div>
 
@@ -293,3 +284,9 @@ body{
 
 </body>
 </html>
+
+
+
+
+
+
