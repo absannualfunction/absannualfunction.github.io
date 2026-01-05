@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ganesh-Saraswati Vandana</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+  <title>Ganesh–Saraswati Vandana</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -17,6 +15,12 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    body {
+      background: #150031;
+      color: #fff;
+    }
+
+    /* ---------- WELCOME SCREEN ---------- */
     #welcome-screen {
       position: fixed;
       inset: 0;
@@ -37,12 +41,12 @@
     .welcome-content h1,
     .welcome-content p {
       font-family: 'Allura', cursive;
+      color: #ffdfb3;
     }
 
     .welcome-content h1 {
       font-size: 52px;
-      color: #ffdfb3;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .welcome-content p {
@@ -50,12 +54,11 @@
     }
 
     @keyframes welcomePop {
-      0% {
+      from {
         opacity: 0;
         transform: scale(0.8);
       }
-
-      100% {
+      to {
         opacity: 1;
         transform: scale(1);
       }
@@ -68,163 +71,89 @@
       }
     }
 
+    /* ---------- VIDEO ---------- */
+    .video-container {
+      position: relative;
+      width: 100vw;
+      aspect-ratio: 16 / 9;
+      background: black;
+      overflow: hidden;
+    }
 
-    body {
-      min-height: 100vh;
-      background: #150031;
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ---------- OVERLAY ---------- */
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #fff;
+      z-index: 2;
     }
 
+    .play-button {
+      background: rgba(0, 0, 0, 0.65);
+      border: 2px solid #ffdfb3;
+      color: #ffdfb3;
+      padding: 18px 30px;
+      border-radius: 50px;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
+    .play-button span {
+      font-size: 26px;
+    }
+
+    .fullscreen-btn {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      background: rgba(0, 0, 0, 0.65);
+      color: #ffdfb3;
+      border: 1px solid #ffdfb3;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .fullscreen-btn:hover {
+      background: rgba(0, 0, 0, 0.85);
+    }
+
+    /* ---------- MAIN CONTENT ---------- */
     .wrapper {
-      width: 100%;
       max-width: 420px;
+      margin: auto;
       padding: 16px;
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
-
-    .school-header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
     .school-header img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
     }
 
-
-    .video-box {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .video-box video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-
-    .image-scroll {
-      overflow-x: auto;
-      scrollbar-width: none;
-
-    }
-
-    .image-track {
-      display: flex;
-      gap: 14px;
-    }
-
-    .image-track img {
-      width: 160px;
-      height: 90px;
-      object-fit: cover;
-      border-radius: 8px;
-      flex-shrink: 0;
-    }
-
-
-    .participants-title {
+    h2 {
       text-align: center;
-      font-size: 22px;
-      font-weight: 600;
       color: bisque;
     }
 
-    .credits-box {
-      position: relative;
-      height: 240px;
-      background: rgba(0, 0, 0, 0.55);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-
-    .fade {
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 40px;
-      z-index: 2;
-    }
-
-    .fade.top {
-      top: 0;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
-    }
-
-    .fade.bottom {
-      bottom: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-    }
-
-
-    .credits-track {
-      position: absolute;
-      width: 100%;
-      animation: scrollCredits 14s linear infinite;
-    }
-
-    .credits-content {
-      padding: 30px 20px;
-      Text-align: center;
-    }
-
-    .credits-content h3 {
-      font-size: 20px;
-      margin-bottom: 18px;
-      color: #ffdfb3;
-    }
-
-    .credits-content p {
-      margin: 6px 0;
-      font-size: 14px;
-      opacity: 0.9;
-    }
-
-    @keyframes scrollCredits {
-      0% {
-        transform: translateY(0);
-      }
-
-      100% {
-        transform: translateY(-100%);
-      }
-    }
-
-    @media(min-width:1024px) {
+    @media (min-width: 1024px) {
       .wrapper {
         max-width: 1200px;
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 26px;
-      }
-
-      .school-header {
-        grid-column: 1/-1;
-      }
-
-      .participants-title {
-        grid-column: 1/-1;
-      }
-
-      .credits-box {
-        height: 1200px;
-      }
-
-      .credits-track {
-        animation-duration: 3000s;
       }
     }
   </style>
@@ -232,98 +161,61 @@
 
 <body>
 
-
+  <!-- WELCOME -->
   <div id="welcome-screen">
     <div class="welcome-content">
-      <h1>Welcome to <br>Annie Besant School</h1>
+      <h1>Welcome to<br>Annie Besant School</h1>
       <p>Rewind 25</p>
     </div>
   </div>
 
-  <div class="wrapper">
+  <!-- VIDEO -->
+  <div class="video-container">
+    <iframe
+      id="driveVideo"
+      src="https://drive.google.com/file/d/1cJMImkpTw4yTaSrL40s_L3l57CaSWKOw/preview"
+      allow="autoplay; fullscreen"
+      allowfullscreen>
+    </iframe>
 
+    <div class="video-overlay" id="videoOverlay">
+      <div class="play-button" id="playBtn">
+        <span>▶</span> Tap to Play
+      </div>
+
+      <button class="fullscreen-btn" id="fsBtn">⛶</button>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="wrapper">
     <div class="school-header">
       <img src="School name png - Bigg.png" alt="School Name">
     </div>
 
-    <div class="video-box">
-      <iframe src="https://drive.google.com/file/d/1cJMImkpTw4yTaSrL40s_L3l57CaSWKOw/preview" width="640" height="480"></iframe>
-    </div>
-<h2>Ganesh-Saraswati Vandana</h2>
-    <div class="image-scroll">
-      <div class="image-track">
-        	<a href="ABHIVYAKTI.html"><img src="/Thumbnails/Abhivyakti.png"></a>
-	      <a href="BACHPAN KE SAPNE.html"><img src="/Thumbnails/BachpanKeSapne.png"></a>
-        <a href="ENGLISH PLAY.html"><img src="/Thumbnails/EnglishDrama.png"></a>
-        <a href="FESTIVALS OF INDIA.html"><img src="/Thumbnails/FestivalsOfIndia.png"></a>
-        <a href="GANESH VANADANA .html"><img src="/Thumbnails/GaneshSaraswatiVandana.png"></a>
-        <a href="GRAND FINALE .html"><img src="/Thumbnails/GrandFinale.png"></a>
-        <a href="GURU KA ASHIRWAD.html"><img src="/Thumbnails/HindiDrama.png"></a>
-        <a href="INCREDIBLE INDIA.html"><img src="/Thumbnails/IncredibleIndia.png"></a>
-        <a href="KHATTI MITTHI YAADE.html"><img src="/Thumbnails/KhattiMeethi.png"></a>
-        <a href="MIME.html"><img src="/Thumbnails/Mime.png"></a>
-        <a href="ORCHESTRA.html"><img src="/Thumbnails/Music.png"></a>
-        <a href="SCHOOL DAYS.html"><img src="/Thumbnails/SchoolDays.png"></a>
-        <a href="SPORTS.html"><img src="/Thumbnails/Sports.png"></a>
-        <a href="TRIBUTE TO MOTHER.html"><img src="/Thumbnails/TributeToMother.png"></a>
-        <a href="WELCOME DANCE MAGIC OF CHILDHOOD.html"><img src="/Thumbnails/Welcome.png"></a>
-        <a href="demo web .html"><img src="/Thumbnails/IT.png"></a>
-      </div>
-    </div>
-
-    <h2 class="participants-title">Participants</h2>
-
-    <div class="credits-box">
-      <div class="fade top"></div>
-      <div class="fade bottom"></div>
-
-      <div class="credits-track">
-        <div class="credits-content">
-          <p>SHREYA SONI - IX A</p>
-          <p>KARNIKA PAWAR - IX A</p>
-          <p>AARNA GUPTA - VI B</p>
-          <p>AVNI SONI - IX A</p>
-          <p>ANSHIKA GUPTA - VI B</p>
-          <p>AASHI SHARMA - IX A</p>
-          <p>ANUSHREE SEVORE - VII A</p>
-          <p>UNNATI SRIVASTAVA - IX B</p>
-          <p>AVIKA BHAND - VII A</p>
-          <p>PRATHA PANDYA - IX B</p>
-          <p>DARSHIKA VERMA - VII A</p>
-          <p>AARNA KULKARNI - IX B</p>
-          <p>DIVYANSHI KAMLODIYA - VII A</p>
-          <p>SHIVANI SABLANI - IX B</p>
-          <p>NAVYA BHARDWAJ - VII A</p>
-          <p>PURVA AGRAWAL - IX B</p>
-          <p>SHAGUN NAGAR - VII A</p>
-          <p>KANIKA MANDLIWAL - IX B</p>
-          <p>SANVI PANCHAL - VII A</p>
-          <p>AAYUSHI SURWADE - IX C (LKPS)</p>
-          <p>SAYEE RANA - VII A</p>
-          <p>PRANJAL SHARMA - IX B</p>
-          <p>UTSAVI TRIVADI - VII B</p>
-          <p>ARJIT ADBHAI - IX B</p>
-          <p>KAUSHIKI GURJAR - VIII B</p>
-          <p>R. NEEL - IX B</p>
-          <p>SHREYA TIWARI - VIII B</p>
-          <p>RONAK JAISWAL - IX B</p>
-          <p>YAMINI LIKHITAKAR - VIII B</p>
-          <p>VAIDIK PARMAR - IX B</p>
-          <p>RAKSHIKA GUPTA - IX A</p>
-          <p>KINJAL VISHWAKARMA - IX B</p>
-          <p>SUJEET SHAH - IX A</p>
-
-        </div>
-      </div>
-    </div>
-
+    <h2>Ganesh–Saraswati Vandana</h2>
   </div>
 
+  <!-- SCRIPT -->
+  <script>
+    const iframe = document.getElementById('driveVideo');
+    const overlay = document.getElementById('videoOverlay');
+    const playBtn = document.getElementById('playBtn');
+    const fsBtn = document.getElementById('fsBtn');
+
+    playBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+      iframe.src = iframe.src + '?autoplay=1';
+    });
+
+    fsBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      if (iframe.requestFullscreen) iframe.requestFullscreen();
+      else if (iframe.webkitRequestFullscreen) iframe.webkitRequestFullscreen();
+      else if (iframe.msRequestFullscreen) iframe.msRequestFullscreen();
+    });
+  </script>
+
 </body>
-
-
 </html>
-
-
-
-
