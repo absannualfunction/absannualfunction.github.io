@@ -1,221 +1,702 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ganesh–Saraswati Vandana</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganesh-Saraswati Vandana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #f8fafc, #ffffff, #f8fafc);
+            color: #1e293b;
+            line-height: 1.6;
+        }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+        .min-h-screen {
+            min-height: 100vh;
+        }
 
-    body {
-      background: #150031;
-      color: #fff;
-    }
+        /* Header Styles */
+        header {
+            height: 6.25vh;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
 
-    /* ---------- WELCOME SCREEN ---------- */
-    #welcome-screen {
-      position: fixed;
-      inset: 0;
-      background: #150031;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      animation: hideWelcome 1s ease forwards;
-      animation-delay: 2.5s;
-    }
+        .header-container {
+            width: 100%;
+            max-width: 80rem;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
 
-    .welcome-content {
-      text-align: center;
-      animation: welcomePop 2s ease forwards;
-    }
+        .logo-section-1 {
+            width: 33.333%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .welcome-content h1,
-    .welcome-content p {
-      font-family: 'Allura', cursive;
-      color: #ffdfb3;
-    }
+        .logo-section-2 {
+            width: 66.666%;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-    .welcome-content h1 {
-      font-size: 52px;
-      margin-bottom: 10px;
-    }
+        .logo {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 1.25rem;
+        }
 
-    .welcome-content p {
-      font-size: 66px;
-    }
+        .logo-1 {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+        }
 
-    @keyframes welcomePop {
-      from {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
+        .logo-2 {
+            background: linear-gradient(135deg, #9333ea, #db2777);
+        }
 
-    @keyframes hideWelcome {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
+        .media-hub-text {
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: #0f172a;
+            display: none;
+        }
 
-    /* ---------- VIDEO ---------- */
-    .video-container {
-      position: relative;
-      width: 100vw;
-      aspect-ratio: 16 / 9;
-      background: black;
-      overflow: hidden;
-    }
+        @media (min-width: 640px) {
+            .media-hub-text {
+                display: inline;
+            }
+        }
 
-    .video-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+        /* Tab Navigation */
+        .tab-container {
+            position: sticky;
+            top: 6.25vh;
+            z-index: 40;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+        }
 
-    /* ---------- OVERLAY ---------- */
-    .video-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.55);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 2;
-    }
+        .tab-wrapper {
+            width: 100%;
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
-    .play-button {
-      background: rgba(0, 0, 0, 0.65);
-      border: 2px solid #ffdfb3;
-      color: #ffdfb3;
-      padding: 18px 30px;
-      border-radius: 50px;
-      font-size: 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+        .tab-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            background: transparent;
+            border-bottom: 1px solid #e2e8f0;
+            height: auto;
+            padding: 0;
+        }
 
-    .play-button span {
-      font-size: 26px;
-    }
+        .tab-trigger {
+            border-bottom: 2px solid transparent;
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            color: #475569;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
 
-    .fullscreen-btn {
-      position: absolute;
-      bottom: 16px;
-      right: 16px;
-      background: rgba(0, 0, 0, 0.65);
-      color: #ffdfb3;
-      border: 1px solid #ffdfb3;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+        .tab-trigger:hover {
+            color: #2563eb;
+            background: rgba(37, 99, 235, 0.05);
+        }
 
-    .fullscreen-btn:hover {
-      background: rgba(0, 0, 0, 0.85);
-    }
+        .tab-trigger.active {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+            background: transparent;
+        }
 
-    /* ---------- MAIN CONTENT ---------- */
-    .wrapper {
-      max-width: 420px;
-      margin: auto;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+        /* Content Sections */
+        .content-wrapper {
+            width: 100%;
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: none;
+        }
 
-    .school-header img {
-      width: 100%;
-      height: auto;
-    }
+        .content-wrapper.active {
+            display: block;
+        }
 
-    h2 {
-      text-align: center;
-      color: bisque;
-    }
+        .content-section {
+            padding: 3rem 0;
+            space-y: 2rem;
+        }
 
-    @media (min-width: 1024px) {
-      .wrapper {
-        max-width: 1200px;
-      }
-    }
-  </style>
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: #64748b;
+            font-size: 1rem;
+        }
+
+        /* Video/Photo Grid */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .media-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        .media-card {
+            position: relative;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background: #e2e8f0;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            group-image-wrapper: true;
+        }
+
+        .media-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .media-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .media-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .media-card-video {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background: #0f172a;
+            aspect-ratio: 16/9;
+        }
+
+        .media-card-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .media-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0);
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .media-card:hover .media-overlay {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .play-button {
+            width: 3rem;
+            height: 3rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .media-card:hover .play-button {
+            opacity: 1;
+        }
+
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-left: 8px solid #0f172a;
+            border-right: 0 solid transparent;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            margin-left: 0.25rem;
+        }
+
+        .media-title {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .media-duration {
+            position: absolute;
+            bottom: 0.5rem;
+            right: 0.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+
+        /* Photo Gallery - 2xX Grid */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .photo-gallery {
+                gap: 0.5rem;
+            }
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            background: #e2e8f0;
+            aspect-ratio: 1/1;
+            group-hover-scale: 1.05;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0);
+            transition: background-color 0.3s ease;
+        }
+
+        .photo-item:hover .photo-overlay {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Movie Credits */
+        .credits-section {
+            width: 100%;
+            background: linear-gradient(180deg, #1e293b, #0f172a, #1e293b);
+            padding: 2rem 1rem;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .credits-header {
+            text-align: center;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .credits-scroller {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            animation: scroll-up 60s linear infinite;
+            max-height: 20rem;
+            overflow: hidden;
+            padding: 0.5rem 1rem;
+            width: 100%;
+            max-width: 24rem;
+            margin: 0 auto;
+        }
+
+        .credits-scroller:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll-up {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+
+        .credit-item {
+            flex-shrink: 0;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+            border-radius: 0.35rem;
+            border-left: 2px solid rgba(37, 99, 235, 0.5);
+            transition: all 0.2s ease;
+        }
+
+        .credit-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-left-color: #2563eb;
+            transform: translateX(0.25rem);
+        }
+
+        .credit-name {
+            color: white;
+            font-weight: 500;
+            font-size: 0.8rem;
+            margin: 0;
+        }
+
+        .credit-role {
+            color: #cbd5e1;
+            font-size: 0.7rem;
+            margin: 0.15rem 0 0 0;
+        }
+
+        /* Video Carousel */
+        .carousel-section {
+            padding: 3rem 0;
+        }
+
+        .carousel-header {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+        }
+
+        .carousel-container {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 1rem 0;
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .carousel-container::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+
+        .carousel-container::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        .carousel-item {
+            flex: 0 0 100%;
+            min-width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .carousel-item {
+                flex: 0 0 50%;
+                min-width: 50%;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .carousel-item {
+                flex: 0 0 33.333%;
+                min-width: 33.333%;
+            }
+        }
+
+        .carousel-video {
+            position: relative;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background: #0f172a;
+            aspect-ratio: 16/9;
+        }
+
+        .carousel-video img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-video:hover img {
+            transform: scale(1.1);
+        }
+
+        .carousel-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0);
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-video:hover .carousel-overlay {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .carousel-play {
+            width: 3rem;
+            height: 3rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-video:hover .carousel-play {
+            opacity: 1;
+        }
+
+        .carousel-duration {
+            position: absolute;
+            bottom: 0.5rem;
+            right: 0.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+
+        .video-title {
+            margin-top: 0.75rem;
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .carousel-video:hover .video-title {
+            color: #2563eb;
+        }
+
+        /* Navigation Buttons */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: none;
+            border-radius: 50%;
+            padding: 0.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            background: #f1f5f9;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .nav-button.prev {
+            left: -2rem;
+        }
+
+        .nav-button.next {
+            right: -2rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-button.prev {
+                left: 0;
+            }
+
+            .nav-button.next {
+                right: 0;
+            }
+        }
+
+        .nav-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #0f172a;
+        }
+
+        /* Utility Classes */
+        .space-y-6 > * + * {
+            margin-top: 1.5rem;
+        }
+
+        .space-y-8 > * + * {
+            margin-top: 2rem;
+        }
+    </style>
 </head>
-
 <body>
+    <div class="min-h-screen">
+        <!-- Header -->
+        <header>
+            <div class="header-container">
+                <div class="logo-section-1">
+                    <div class="logo logo-1">M</div>
+                </div>
+                <div class="logo-section-2">
+                    <div class="logo logo-2">H</div>
+                    <span class="media-hub-text">Ganesh-Swaraswati Vandana</span>
+                </div>
+            </div>
+        </header>
 
-  <!-- WELCOME -->
-  <div id="welcome-screen">
-    <div class="welcome-content">
-      <h1>Welcome to<br>Annie Besant School</h1>
-      <p>Rewind 25</p>
-    </div>
-  </div>
+        <!-- Tab Navigation -->
+        <div class="tab-container">
+            <div class="tab-wrapper">
+                <div class="tab-list">
+                    <button class="tab-trigger active" data-tab="videos">Video</button>
+                    <button class="tab-trigger" data-tab="photos">Photos</button>
+                    <button class="tab-trigger" data-tab="bts">BTS</button>
+                </div>
+            </div>
+        </div>
 
-  <!-- VIDEO -->
-  <div class="video-container">
-    <iframe
-      id="driveVideo"
-      src="https://drive.google.com/file/d/1cJMImkpTw4yTaSrL40s_L3l57CaSWKOw/preview"
-      allow="autoplay; fullscreen"
-      allowfullscreen>
-    </iframe>
+        <!-- Videos Tab Content -->
+        <div class="content-wrapper active" id="videos-content">
+            <div class="content-section space-y-8">
+                <!-- Media Production Grid -->
+                <section class="space-y-6">
+                    <div class="section-header">
+                        <h2 class="section-title">Media</h2>
+                        <p class="section-subtitle"></p>
+                    </div>
+                    <div class="media-grid">
+                        <div class="media-card-video">
+                          
+                            <iframe src="https://drive.google.com/file/d/1cJMImkpTw4yTaSrL40s_L3l57CaSWKOw/preview" title="Main" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  
+                        </div>
+                    </div>
+                </section>
 
-    <div class="video-overlay" id="videoOverlay">
-      <div class="play-button" id="playBtn">
-        <span>▶</span> Tap to Play
-      </div>
-
-      <button class="fullscreen-btn" id="fsBtn">⛶</button>
-    </div>
-  </div>
-
-  <!-- CONTENT -->
-  <div class="wrapper">
-    <div class="school-header">
-      <img src="School name png - Bigg.png" alt="School Name">
-    </div>
-
-    <h2>Ganesh–Saraswati Vandana</h2>
-  </div>
-
-  <!-- SCRIPT -->
-  <script>
-    const iframe = document.getElementById('driveVideo');
-    const overlay = document.getElementById('videoOverlay');
-    const playBtn = document.getElementById('playBtn');
-    const fsBtn = document.getElementById('fsBtn');
-
-    playBtn.addEventListener('click', () => {
-      overlay.style.display = 'none';
-      iframe.src = iframe.src + '?autoplay=1';
-    });
-
-    fsBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-
-      if (iframe.requestFullscreen) iframe.requestFullscreen();
-      else if (iframe.webkitRequestFullscreen) iframe.webkitRequestFullscreen();
-      else if (iframe.msRequestFullscreen) iframe.msRequestFullscreen();
-    });
-  </script>
-
-</body>
-</html>
+                <!-- Movie Credits -->
+                <div class="credits-section">
+                    <div class="credits-header">Movie Credits</div>
+                    <div class="credits-scroller">
+                        <div class="credit-item">
+                            <div class="credit-name">Alex Johnson</div>
+                            <div class="credit-role">Director</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-name">Sarah Williams</div>
+                            <div class="credit-role">Producer</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-name">Michael Chen</div>
+                            <div class="credit-role">Cinematographer</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-name">Emma Davis</div>
+                            <div class="credit-role">Editor</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-name">James Smith</div>
+                            <div class="credit-role">Sound Designer</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-name">Lisa Anderson</div>
+                            <div class="credit-role">Production Designer</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-name">Robert Wilson</div>
+                            <div class="credit-role">Composer</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-name">Jennifer Lee</div>
+                            <div class="credit-role">Lead Actor</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-name">Marcus Johnson</div>
+                            <div class="credit-role">Gaffer</div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-name">Anna Rodriguez</div>
+                            <div class="credit-role">Colorist</div>
+                        </div>
+                        <!-- Cloned for infinite scroll effect -->
+                        <div class="credit-item">
+                            <div class="credit-name">Alex Johnson</div>
+                            <div class="credit-role">Director</div>
+                        </div>
+                        <div class="credit-item">
+                            
