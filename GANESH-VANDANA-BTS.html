@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ganesh-Saraswati Vandana – BTS</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+
+    body {
+      min-height: 100vh;
+      background: #150031;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    #welcome-screen {
+      position: fixed;
+      inset: 0;
+      background: #150031;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: hideWelcome 1s ease forwards;
+      animation-delay: 2.5s;
+    }
+
+    .welcome-content { text-align: center; animation: welcomePop 2s ease forwards; }
+    .welcome-content h1, .welcome-content p { font-family: 'Allura', cursive; }
+    .welcome-content h1 { font-size: 52px; color: #ffdfb3; margin-bottom: 14px; }
+    .welcome-content p { font-size: 66px; }
+
+    @keyframes welcomePop { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+    @keyframes hideWelcome { to { opacity: 0; visibility: hidden; } }
+
+    .wrapper {
+      width: 100%;
+      max-width: 420px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .school-header { display: flex; justify-content: center; }
+    .school-header img { max-width: 100%; }
+
+    .tabs { display: flex; justify-content: center; gap: 12px; }
+    .tab {
+      padding: 8px 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.12);
+      color: #ffdfb3;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .tab.active { background: #ffdfb3; color: #150031; font-weight: 600; }
+
+    .media-card-video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media(min-width:1024px) {
+      .wrapper {
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 26px;
+      }
+      .school-header, .tabs { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="welcome-screen">
+  <div class="welcome-content">
+    <h1>Welcome to <br>Annie Besant School</h1>
+    <p>Rewind 25</p>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <div class="school-header">
+    <img src="School name png - Bigg.png">
+  </div>
+
+  <div class="tabs">
+    <a href="GANESH-VANDANA.html" class="tab">Video</a>
+    <a href="GANESH-VANDANA-PHOTOS.html" class="tab">Photos</a>
+    <a href="GANESH-VANDANA-BTS.html" class="tab active">BTS</a>
+  </div>
+
+  <div class="media-card-video">
+    <video src="Videos/Ganeshsaraswativandana.mp4" controls preload="metadata"></video>
+  </div>
+
+  <h2>Behind the Scenes</h2>
+
+</div>
+</body>
+</html>
