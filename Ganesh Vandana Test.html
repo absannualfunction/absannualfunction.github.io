@@ -1,759 +1,349 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ganesh-Saraswati Vandana</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(to bottom, #f8fafc, #ffffff, #f8fafc);
-            color: #1e293b;
-            line-height: 1.6;
-        }
-
-        .min-h-screen {
-            min-height: 100vh;
-        }
-
-        /* Header Styles */
-        header {
-            height: 6.25vh;
-            background: white;
-            border-bottom: 1px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            padding: 0 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 50;
-        }
-
-        .header-container {
-            width: 100%;
-            max-width: 80rem;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .logo-section-1 {
-            width: 33.333%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-section-2 {
-            width: 66.666%;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo {
-            width: 3rem;
-            height: 3rem;
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: white;
-            font-size: 1.25rem;
-        }
-
-        .logo-1 {
-            background: linear-gradient(135deg, #2563eb, #1e40af);
-        }
-
-        .logo-2 {
-            background: linear-gradient(135deg, #9333ea, #db2777);
-        }
-
-        .media-hub-text {
-            font-size: 1.125rem;
-            font-weight: bold;
-            color: #0f172a;
-            display: none;
-        }
-
-        @media (min-width: 640px) {
-            .media-hub-text {
-                display: inline;
-            }
-        }
-
-        /* Tab Navigation */
-        .tab-container {
-            position: sticky;
-            top: 6.25vh;
-            z-index: 40;
-            background: white;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .tab-wrapper {
-            width: 100%;
-            max-width: 80rem;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .tab-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0;
-            background: transparent;
-            border-bottom: 1px solid #e2e8f0;
-            height: auto;
-            padding: 0;
-        }
-
-        .tab-trigger {
-            border-bottom: 2px solid transparent;
-            padding: 1rem 1.5rem;
-            font-weight: 600;
-            color: #475569;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .tab-trigger:hover {
-            color: #2563eb;
-            background: rgba(37, 99, 235, 0.05);
-        }
-
-        .tab-trigger.active {
-            color: #2563eb;
-            border-bottom-color: #2563eb;
-            background: transparent;
-        }
-
-        /* Content Sections */
-        .content-wrapper {
-            width: 100%;
-            max-width: 80rem;
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: none;
-        }
-
-        .content-wrapper.active {
-            display: block;
-        }
-
-        .content-section {
-            padding: 3rem 0;
-            space-y: 2rem;
-        }
-
-        .section-header {
-            margin-bottom: 2rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #0f172a;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-subtitle {
-            color: #64748b;
-            font-size: 1rem;
-        }
-
-        /* Video/Photo Grid */
-        .media-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .media-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-        }
-
-        .media-card {
-            position: relative;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            background: #e2e8f0;
-            aspect-ratio: 16/9;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            group-image-wrapper: true;
-        }
-
-        .media-card:hover {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .media-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .media-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .media-card-video {
-            border-radius: 0.5rem;
-            overflow: hidden;
-            background: #0f172a;
-            aspect-ratio: 16/9;
-        }
-
-        .media-card-video iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .media-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0);
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .media-card:hover .media-overlay {
-            background: rgba(0, 0, 0, 0.4);
-        }
-
-        .play-button {
-            width: 3rem;
-            height: 3rem;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            opacity: 0;
-        }
-
-        .media-card:hover .play-button {
-            opacity: 1;
-        }
-
-        .play-icon {
-            width: 0;
-            height: 0;
-            border-left: 8px solid #0f172a;
-            border-right: 0 solid transparent;
-            border-top: 5px solid transparent;
-            border-bottom: 5px solid transparent;
-            margin-left: 0.25rem;
-        }
-
-        .media-title {
-            position: absolute;
-            bottom: 1rem;
-            left: 1rem;
-            color: white;
-            font-weight: 600;
-            font-size: 0.875rem;
-        }
-
-        .media-duration {
-            position: absolute;
-            bottom: 0.5rem;
-            right: 0.5rem;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            font-size: 0.75rem;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-        }
-
-        /* Photo Gallery - 2xX Grid */
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.75rem;
-            padding: 2rem 0;
-        }
-
-        @media (max-width: 640px) {
-            .photo-gallery {
-                gap: 0.5rem;
-            }
-        }
-
-        .photo-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 0.5rem;
-            background: #e2e8f0;
-            aspect-ratio: 1/1;
-            group-hover-scale: 1.05;
-        }
-
-        .photo-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .photo-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .photo-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0);
-            transition: background-color 0.3s ease;
-        }
-
-        .photo-item:hover .photo-overlay {
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        /* Movie Credits */
-        .credits-section {
-            width: 100%;
-            background: linear-gradient(180deg, #1e293b, #0f172a, #1e293b);
-            padding: 2rem 1rem;
-            margin: 2rem 0;
-            overflow: hidden;
-        }
-
-        .credits-header {
-            text-align: center;
-            color: white;
-            font-size: 0.875rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-        }
-
-        .credits-scroller {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            animation: scroll-up 10s linear infinite;
-            max-height: 20rem;
-            overflow: hidden;
-            padding: 0.5rem 1rem;
-            width: 100%;
-            max-width: 24rem;
-            margin: 0 auto;
-        }
-
-        .credits-scroller:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes scroll-up {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-50%);
-            }
-        }
-
-        .credit-item {
-            flex-shrink: 0;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(4px);
-            border-radius: 0.35rem;
-            border-left: 2px solid rgba(37, 99, 235, 0.5);
-            transition: all 0.2s ease;
-        }
-
-        .credit-item:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-left-color: #2563eb;
-            transform: translateX(0.25rem);
-        }
-
-        .credit-name {
-            color: white;
-            font-weight: 500;
-            font-size: 0.8rem;
-            margin: 0;
-        }
-
-        .credit-role {
-            color: #cbd5e1;
-            font-size: 0.7rem;
-            margin: 0.15rem 0 0 0;
-        }
-
-        /* Video Carousel */
-        .carousel-section {
-            padding: 3rem 0;
-        }
-
-        .carousel-header {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #0f172a;
-            margin-bottom: 1.5rem;
-        }
-
-        .carousel-wrapper {
-            position: relative;
-        }
-
-        .carousel-container {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            padding: 1rem 0;
-        }
-
-        .carousel-container::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .carousel-container::-webkit-scrollbar-track {
-            background: #e2e8f0;
-            border-radius: 10px;
-        }
-
-        .carousel-container::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-
-        .carousel-item {
-            flex: 0 0 100%;
-            min-width: 100%;
-        }
-
-        @media (min-width: 640px) {
-            .carousel-item {
-                flex: 0 0 50%;
-                min-width: 50%;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .carousel-item {
-                flex: 0 0 33.333%;
-                min-width: 33.333%;
-            }
-        }
-
-        .carousel-video {
-            position: relative;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            background: #0f172a;
-            aspect-ratio: 16/9;
-        }
-
-        .carousel-video img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .carousel-video:hover img {
-            transform: scale(1.1);
-        }
-
-        .carousel-video iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .carousel-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0);
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-video:hover .carousel-overlay {
-            background: rgba(0, 0, 0, 0.4);
-        }
-
-        .carousel-play {
-            width: 3rem;
-            height: 3rem;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .carousel-video:hover .carousel-play {
-            opacity: 1;
-        }
-
-        .carousel-duration {
-            position: absolute;
-            bottom: 0.5rem;
-            right: 0.5rem;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            font-size: 0.75rem;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-        }
-
-        .video-title {
-            margin-top: 0.75rem;
-            font-weight: 600;
-            color: #0f172a;
-            font-size: 0.875rem;
-            transition: color 0.3s ease;
-        }
-
-        .carousel-video:hover .video-title {
-            color: #2563eb;
-        }
-
-        /* Navigation Buttons */
-        .nav-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: white;
-            border: none;
-            border-radius: 50%;
-            padding: 0.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nav-button:hover:not(:disabled) {
-            background: #f1f5f9;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        .nav-button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .nav-button.prev {
-            left: -2rem;
-        }
-
-        .nav-button.next {
-            right: -2rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-button.prev {
-                left: 0;
-            }
-
-            .nav-button.next {
-                right: 0;
-            }
-        }
-
-        .nav-icon {
-            width: 1.25rem;
-            height: 1.25rem;
-            color: #0f172a;
-        }
-
-        /* Utility Classes */
-        .space-y-6 > * + * {
-            margin-top: 1.5rem;
-        }
-
-        .space-y-8 > * + * {
-            margin-top: 2rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ganesh-Saraswati Vandana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #welcome-screen {
+      position: fixed;
+      inset: 0;
+      background: #150031;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: hideWelcome 1s ease forwards;
+      animation-delay: 2.5s;
+    }
+
+    .welcome-content {
+      text-align: center;
+      animation: welcomePop 2s ease forwards;
+    }
+
+    .welcome-content h1,
+    .welcome-content p {
+      font-family: 'Allura', cursive;
+    }
+
+    .welcome-content h1 {
+      font-size: 52px;
+      color: #ffdfb3;
+      margin-bottom: 14px;
+    }
+
+    .welcome-content p {
+      font-size: 66px;
+    }
+
+    @keyframes welcomePop {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes hideWelcome {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+
+    body {
+      min-height: 100vh;
+      background: #150031;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+
+    .wrapper {
+      width: 100%;
+      max-width: 420px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+
+    .school-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .school-header img {
+      max-width: 100%;
+      height: auto;
+    }
+
+
+    .video-box {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .video-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Media Hub Video Player (Imported) */
+    .media-card-video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+    }
+
+.media-card-video iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+
+    .image-scroll {
+      overflow-x: auto;
+      scrollbar-width: none;
+
+    }
+
+    .image-track {
+      display: flex;
+      gap: 14px;
+    }
+
+    .image-track img {
+      width: 160px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+
+    .participants-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 600;
+      color: bisque;
+    }
+
+    .credits-box {
+      position: relative;
+      height: 240px;
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+
+    .fade {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 40px;
+      z-index: 2;
+    }
+
+    .fade.top {
+      top: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+    }
+
+    .fade.bottom {
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    }
+
+
+    .credits-track {
+      position: absolute;
+      width: 100%;
+      animation: scrollCredits 14s linear infinite;
+    }
+
+    .credits-content {
+      padding: 30px 20px;
+      Text-align: center;
+    }
+
+    .credits-content h3 {
+      font-size: 20px;
+      margin-bottom: 18px;
+      color: #ffdfb3;
+    }
+
+    .credits-content p {
+      margin: 6px 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    @keyframes scrollCredits {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-100%);
+      }
+    }
+
+    @media(min-width:1024px) {
+      .wrapper {
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 26px;
+      }
+
+      .school-header {
+        grid-column: 1/-1;
+      }
+
+      .participants-title {
+        grid-column: 1/-1;
+      }
+
+      .credits-box {
+        height: 1200px;
+      }
+
+      .credits-track {
+        animation-duration: 3000s;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="min-h-screen">
-        <!-- Header -->
-        <header>
-            <div class="header-container">
-                <div class="logo-section-1">
-                    <div class="logo logo-1">M</div>
-                </div>
-                <div class="logo-section-2">
-                    <div class="logo logo-2">H</div>
-                    <span class="media-hub-text">Ganesh-Swaraswati Vandana</span>
-                </div>
-            </div>
-        </header>
 
-        <!-- Tab Navigation -->
-        <div class="tab-container">
-            <div class="tab-wrapper">
-                <div class="tab-list">
-                    <button class="tab-trigger active" data-tab="videos">Video</button>
-                    <button class="tab-trigger" data-tab="photos">Photos</button>
-                    <button class="tab-trigger" data-tab="bts">BTS</button>
-                </div>
-            </div>
+
+  <div id="welcome-screen">
+    <div class="welcome-content">
+      <h1>Welcome to <br>Annie Besant School</h1>
+      <p>Rewind 25</p>
+    </div>
+  </div>
+
+  <div class="wrapper">
+
+    <div class="school-header">
+      <img src="School name png - Bigg.png" alt="School Name">
+    </div>
+
+    <div class="media-card-video">
+      <iframe
+        src="https://drive.google.com/file/d/1cJMImkpTw4yTaSrL40s_L3l57CaSWKOw/preview"
+        title="Ganesh Saraswati Vandana"
+        allow="autoplay"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+<h2>Ganesh-Saraswati Vandana</h2>
+    <div class="image-scroll">
+      <div class="image-track">
+        	<a href="ABHIVYAKTI.html"><img src="/Thumbnails/Abhivyakti.png"></a>
+	      <a href="BACHPAN KE SAPNE.html"><img src="/Thumbnails/BachpanKeSapne.png"></a>
+        <a href="ENGLISH PLAY.html"><img src="/Thumbnails/EnglishDrama.png"></a>
+        <a href="FESTIVALS OF INDIA.html"><img src="/Thumbnails/FestivalsOfIndia.png"></a>
+        <a href="GANESH VANADANA .html"><img src="/Thumbnails/GaneshSaraswatiVandana.png"></a>
+        <a href="GRAND FINALE .html"><img src="/Thumbnails/GrandFinale.png"></a>
+        <a href="GURU KA ASHIRWAD.html"><img src="/Thumbnails/HindiDrama.png"></a>
+        <a href="INCREDIBLE INDIA.html"><img src="/Thumbnails/IncredibleIndia.png"></a>
+        <a href="KHATTI MITTHI YAADE.html"><img src="/Thumbnails/KhattiMeethi.png"></a>
+        <a href="MIME.html"><img src="/Thumbnails/Mime.png"></a>
+        <a href="ORCHESTRA.html"><img src="/Thumbnails/Music.png"></a>
+        <a href="SCHOOL DAYS.html"><img src="/Thumbnails/SchoolDays.png"></a>
+        <a href="SPORTS.html"><img src="/Thumbnails/Sports.png"></a>
+        <a href="TRIBUTE TO MOTHER.html"><img src="/Thumbnails/TributeToMother.png"></a>
+        <a href="WELCOME DANCE MAGIC OF CHILDHOOD.html"><img src="/Thumbnails/Welcome.png"></a>
+        <a href="demo web .html"><img src="/Thumbnails/IT.png"></a>
+      </div>
+    </div>
+
+    <h2 class="participants-title">Participants</h2>
+
+    <div class="credits-box">
+      <div class="fade top"></div>
+      <div class="fade bottom"></div>
+
+      <div class="credits-track">
+        <div class="credits-content">
+          <p>SHREYA SONI - IX A</p>
+          <p>KARNIKA PAWAR - IX A</p>
+          <p>AARNA GUPTA - VI B</p>
+          <p>AVNI SONI - IX A</p>
+          <p>ANSHIKA GUPTA - VI B</p>
+          <p>AASHI SHARMA - IX A</p>
+          <p>ANUSHREE SEVORE - VII A</p>
+          <p>UNNATI SRIVASTAVA - IX B</p>
+          <p>AVIKA BHAND - VII A</p>
+          <p>PRATHA PANDYA - IX B</p>
+          <p>DARSHIKA VERMA - VII A</p>
+          <p>AARNA KULKARNI - IX B</p>
+          <p>DIVYANSHI KAMLODIYA - VII A</p>
+          <p>SHIVANI SABLANI - IX B</p>
+          <p>NAVYA BHARDWAJ - VII A</p>
+          <p>PURVA AGRAWAL - IX B</p>
+          <p>SHAGUN NAGAR - VII A</p>
+          <p>KANIKA MANDLIWAL - IX B</p>
+          <p>SANVI PANCHAL - VII A</p>
+          <p>AAYUSHI SURWADE - IX C (LKPS)</p>
+          <p>SAYEE RANA - VII A</p>
+          <p>PRANJAL SHARMA - IX B</p>
+          <p>UTSAVI TRIVADI - VII B</p>
+          <p>ARJIT ADBHAI - IX B</p>
+          <p>KAUSHIKI GURJAR - VIII B</p>
+          <p>R. NEEL - IX B</p>
+          <p>SHREYA TIWARI - VIII B</p>
+          <p>RONAK JAISWAL - IX B</p>
+          <p>YAMINI LIKHITAKAR - VIII B</p>
+          <p>VAIDIK PARMAR - IX B</p>
+          <p>RAKSHIKA GUPTA - IX A</p>
+          <p>KINJAL VISHWAKARMA - IX B</p>
+          <p>SUJEET SHAH - IX A</p>
+
         </div>
+      </div>
+    </div>
 
-        <!-- Videos Tab Content -->
-        <div class="content-wrapper active" id="videos-content">
-            <div class="content-section space-y-8">
-                <!-- Media Production Grid -->
-                <section class="space-y-6">
-                    <div class="section-header">
-                        <h2 class="section-title">Ganesh-Saraswati Vandana</h2>
-                        <p class="section-subtitle"></p>
-                    </div>
-                    <div class="media-grid">
-                        <div class="media-card-video">
-                          
-                            <iframe src="https://drive.google.com/file/d/1cJMImkpTw4yTaSrL40s_L3l57CaSWKOw/preview" title="Main" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  
-                        </div>
-                    </div>
-                </section>
+  </div>
 
-                <!-- Movie Credits -->
-                <div class="credits-section">
-                    <div class="credits-header">Movie Credits</div>
-                    <div class="credits-scroller">
-                        <div class="credit-item">
-                            <div class="credit-name">SHREYA SONI</div>
-<div class="credit-role">IX A</div>
+</body>
 
-<div class="credit-name">KARNIKA PAWAR</div>
-<div class="credit-role">IX A</div>
 
-<div class="credit-name">AARNA GUPTA</div>
-<div class="credit-role">VI B</div>
+</html>
 
-<div class="credit-name">AVNI SONI</div>
-<div class="credit-role">IX A</div>
 
-<div class="credit-name">ANSHIKA GUPTA</div>
-<div class="credit-role">VI B</div>
 
-<div class="credit-name">AASHI SHARMA</div>
-<div class="credit-role">IX A</div>
 
-<div class="credit-name">ANUSHREE SEVORE</div>
-<div class="credit-role">VII A</div>
-
-<div class="credit-name">UNNATI SRIVASTAVA</div>
-<div class="credit-role">IX B</div>
-
-<div class="credit-name">AVIKA BHAND</div>
-<div class="credit-role">VII A</div>
-
-<div class="credit-name">PRATHA PANDYA</div>
-<div class="credit-role">IX B</div>
-
-<div class="credit-name">DARSHIKA VERMA</div>
-<div class="credit-role">VII A</div>
-
-<div class="credit-name">AARNA KULKARNI</div>
-<div class="credit-role">IX B</div>
-
-<div class="credit-name">DIVYANSHI KAMLODIYA</div>
-<div class="credit-role">VII A</div>
-
-<div class="credit-name">SHIVANI SABLANI</div>
-<div class="credit-role">IX B</div>
-
-<div class="credit-name">NAVYA BHARDWAJ</div>
-<div class="credit-role">VII A</div>
-
-<div class="credit-name">PURVA AGRAWAL</div>
-<div class="credit-role">IX B</div>
-
-<div class="credit-name">SHAGUN NAGAR</div>
-<div class="credit-role">VII A</div>
-
-<div class="credit-name">KANIKA MANDLIWAL</div>
-<div class="credit-role">IX B</div>
-
-<div class="credit-name">SANVI PANCHAL</div>
-<div class="credit-role">VII A</div>
-
-<div class="credit-name">AAYUSHI SURWADE</div>
-<div class="credit-role">IX C (LKPS)</div>
-
-<div class="credit-name">SAYEE RANA</div>
-<div class="credit-role">VII A</div>
-
-<div class="credit-name">PRANJAL SHARMA</div>
-<div class="credit-role">IX B</div>
-
-<div class="credit-name">UTSAVI TRIVADI</div>
-<div class="credit-role">VII B</div>
-
-<div class="credit-name">ARJIT ADBHAI</div>
-<div class="credit-role">IX B</div>
-
-<div class="credit-name">KAUSHIKI GURJAR</div>
-<div class="credit-role">VIII B</div>
-
-<div class="credit-name">R. NEEL</div>
-<div class="credit-role">IX B</div>
-
-<div class="credit-name">SHREYA TIWARI</div>
-<div class="credit-role">VIII B</div>
-
-<div class="credit-name">RONAK JAISWAL</div>
-<div class="credit-role">IX B</div>
-
-<div class="credit-name">YAMINI LIKHITAKAR</div>
-<div class="credit-role">VIII B</div>
-
-<div class="credit-name">VAIDIK PARMAR</div>
-<div class="credit-role">IX B</div>
-
-<div class="credit-name">RAKSHIKA GUPTA</div>
-<div class="credit-role">IX A</div>
-
-<div class="credit-name">KINJAL VISHWAKARMA</div>
-<div class="credit-role">IX B</div>
-
-<div class="credit-name">SUJEET SHAH</div>
-<div class="credit-role">IX A</div>
-
-                            
-                        </div>
-                        <div class="credit-item">
-                            
