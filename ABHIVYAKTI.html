@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Abhivyakti</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
-
 
   <style>
     * {
@@ -17,6 +17,16 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    body {
+      min-height: 100vh;
+      background: #150031;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    /* Welcome Screen */
     #welcome-screen {
       position: fixed;
       inset: 0;
@@ -50,35 +60,15 @@
     }
 
     @keyframes welcomePop {
-      0% {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
     @keyframes hideWelcome {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
+      to { opacity: 0; visibility: hidden; }
     }
 
-
-    body {
-      min-height: 100vh;
-      background: #150031;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-    }
-
-
+    /* Layout */
     .wrapper {
       width: 100%;
       max-width: 420px;
@@ -87,7 +77,6 @@
       flex-direction: column;
       gap: 20px;
     }
-
 
     .school-header {
       display: flex;
@@ -100,25 +89,52 @@
       height: auto;
     }
 
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
 
-    .video-box {
+    .tab {
+      padding: 8px 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffdfb3;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .tab:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .tab.active {
+      background: #ffdfb3;
+      color: #150031;
+      font-weight: 600;
+    }
+
+    /* Video */
+    .media-card-video {
       width: 100%;
-      aspect-ratio: 16/9;
+      aspect-ratio: 16 / 9;
       border-radius: 10px;
       overflow: hidden;
+      background: #000;
     }
 
-    .video-box video {
+    .media-card-video iframe {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      border: none;
     }
 
-
+    /* Thumbnails */
     .image-scroll {
       overflow-x: auto;
       scrollbar-width: none;
-
     }
 
     .image-track {
@@ -134,7 +150,7 @@
       flex-shrink: 0;
     }
 
-
+    /* Credits */
     .participants-title {
       text-align: center;
       font-size: 22px;
@@ -149,7 +165,6 @@
       border-radius: 12px;
       overflow: hidden;
     }
-
 
     .fade {
       position: absolute;
@@ -169,22 +184,15 @@
       background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
     }
 
-
     .credits-track {
       position: absolute;
       width: 100%;
-      animation: scrollCredits 20s linear infinite;
+      animation: scrollCredits 14s linear infinite;
     }
 
     .credits-content {
       padding: 30px 20px;
-      Text-align: center;
-    }
-
-    .credits-content h3 {
-      font-size: 20px;
-      margin-bottom: 18px;
-      color: #ffdfb3;
+      text-align: center;
     }
 
     .credits-content p {
@@ -194,15 +202,11 @@
     }
 
     @keyframes scrollCredits {
-      0% {
-        transform: translateY(0);
-      }
-
-      100% {
-        transform: translateY(-100%);
-      }
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-100%); }
     }
 
+    /* Desktop */
     @media(min-width:1024px) {
       .wrapper {
         max-width: 1200px;
@@ -211,12 +215,10 @@
         gap: 26px;
       }
 
-      .school-header {
-        grid-column: 1/-1;
-      }
-
+      .school-header,
+      .tabs,
       .participants-title {
-        grid-column: 1/-1;
+        grid-column: 1 / -1;
       }
 
       .credits-box {
@@ -232,7 +234,7 @@
 
 <body>
 
-
+  <!-- Welcome Screen -->
   <div id="welcome-screen">
     <div class="welcome-content">
       <h1>Welcome to <br>Annie Besant School</h1>
@@ -242,16 +244,34 @@
 
   <div class="wrapper">
 
+    <!-- Header -->
     <div class="school-header">
       <img src="School name png - Bigg.png" alt="School Name">
     </div>
 
-    <div class="video-box">
-      <video src="/Videos/Abhivyakti.mp4" autoplay loop controls></video>
+    <!-- Tabs -->
+    <div class="tabs">
+      <a href="ABHIVYAKTI.html" class="tab active">Video</a>
+      <a href="https://drive.google.com/drive/folders/1AYBRjx8V2XDXwQJHRK2IfniyEDiomVgb?usp=drive_link" class="tab">Photos</a>
+      <a href="ABHIVYAKTI-BTS.html" class="tab">BTS</a>
     </div>
+
+    <!-- Video -->
+    <div class="media-card-video">
+      <iframe
+        src="https://drive.google.com/file/d/1cJMImkpTw4yTaSrL40s_L3l57CaSWKOw/preview"
+        title="Ganesh Saraswati Vandana"
+        allow="autoplay"
+        allowfullscreen>
+      </iframe>
+    </div>
+
     <h2> Abhivyakti</h2>
+
+    <!-- Thumbnails -->
     <div class="image-scroll">
       <div class="image-track">
+        <a href="ABHIVYAKTI.html"><img src="/Thumbnails/Abhivyakti.png"></a>
         <a href="BACHPAN KE SAPNE.html"><img src="/Thumbnails/BachpanKeSapne.png"></a>
         <a href="ENGLISH PLAY.html"><img src="/Thumbnails/EnglishDrama.png"></a>
         <a href="FESTIVALS OF INDIA.html"><img src="/Thumbnails/FestivalsOfIndia.png"></a>
@@ -266,19 +286,20 @@
         <a href="SPORTS.html"><img src="/Thumbnails/Sports.png"></a>
         <a href="TRIBUTE TO MOTHER.html"><img src="/Thumbnails/TributeToMother.png"></a>
         <a href="WELCOME DANCE MAGIC OF CHILDHOOD.html"><img src="/Thumbnails/Welcome.png"></a>
-        <a href="demo web .html"><img src="/Thumbnails/IT .png"></a>
+        <a href="demo web .html"><img src="/Thumbnails/IT.png"></a>
       </div>
     </div>
 
     <h2 class="participants-title">Participants</h2>
 
+    <!-- Credits -->
     <div class="credits-box">
       <div class="fade top"></div>
       <div class="fade bottom"></div>
-
       <div class="credits-track">
         <div class="credits-content">
-          <p>ANIKA SHARMA - VI A</p>
+          <!-- unchanged participant list -->
+       <p>ANIKA SHARMA - VI A</p>
           <p>KINJAL VERMA - VI A</p>
           <p>MANAS GHAROO - VI A</p>
           <p>VIHAN DHING - VI A</p>
@@ -328,16 +349,5 @@
     </div>
 
   </div>
-
 </body>
-
-
 </html>
-
-
-
-
-
-
-
-
