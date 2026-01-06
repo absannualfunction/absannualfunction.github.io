@@ -10,7 +10,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
     body {
       min-height: 100vh;
@@ -21,6 +26,7 @@
       color: #fff;
     }
 
+    /* Welcome Screen */
     #welcome-screen {
       position: fixed;
       inset: 0;
@@ -33,14 +39,36 @@
       animation-delay: 2.5s;
     }
 
-    .welcome-content { text-align: center; animation: welcomePop 2s ease forwards; }
-    .welcome-content h1, .welcome-content p { font-family: 'Allura', cursive; }
-    .welcome-content h1 { font-size: 52px; color: #ffdfb3; margin-bottom: 14px; }
-    .welcome-content p { font-size: 66px; }
+    .welcome-content {
+      text-align: center;
+      animation: welcomePop 2s ease forwards;
+    }
 
-    @keyframes welcomePop { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-    @keyframes hideWelcome { to { opacity: 0; visibility: hidden; } }
+    .welcome-content h1,
+    .welcome-content p {
+      font-family: 'Allura', cursive;
+    }
 
+    .welcome-content h1 {
+      font-size: 52px;
+      color: #ffdfb3;
+      margin-bottom: 14px;
+    }
+
+    .welcome-content p {
+      font-size: 66px;
+    }
+
+    @keyframes welcomePop {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes hideWelcome {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    /* Layout */
     .wrapper {
       width: 100%;
       max-width: 420px;
@@ -50,26 +78,49 @@
       gap: 20px;
     }
 
-    .school-header { display: flex; justify-content: center; }
-    .school-header img { max-width: 100%; }
+    .school-header {
+      display: flex;
+      justify-content: center;
+    }
 
-    .tabs { display: flex; justify-content: center; gap: 12px; }
+    .school-header img {
+      max-width: 100%;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
     .tab {
       padding: 8px 18px;
       border-radius: 20px;
-      background: rgba(255,255,255,0.12);
+      background: rgba(255, 255, 255, 0.12);
       color: #ffdfb3;
       text-decoration: none;
       font-size: 14px;
+      transition: 0.3s;
     }
-    .tab.active { background: #ffdfb3; color: #150031; font-weight: 600; }
 
+    .tab:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .tab.active {
+      background: #ffdfb3;
+      color: #150031;
+      font-weight: 600;
+    }
+
+    /* Video */
     .media-card-video {
       width: 100%;
       aspect-ratio: 16 / 9;
-      background: #000;
       border-radius: 10px;
       overflow: hidden;
+      background: #000;
     }
 
     video {
@@ -78,6 +129,63 @@
       object-fit: cover;
     }
 
+    /* Credits */
+    .participants-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 600;
+      color: bisque;
+    }
+
+    .credits-box {
+      position: relative;
+      height: 240px;
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .fade {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 40px;
+      z-index: 2;
+    }
+
+    .fade.top {
+      top: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+    }
+
+    .fade.bottom {
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    }
+
+    .credits-track {
+      position: absolute;
+      width: 100%;
+      animation: scrollCredits 14s linear infinite;
+    }
+
+    .credits-content {
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .credits-content p {
+      margin: 6px 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    @keyframes scrollCredits {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100%); }
+    }
+
+    /* Desktop */
     @media(min-width:1024px) {
       .wrapper {
         max-width: 1200px;
@@ -85,13 +193,27 @@
         grid-template-columns: 2fr 1fr;
         gap: 26px;
       }
-      .school-header, .tabs { grid-column: 1 / -1; }
+
+      .school-header,
+      .tabs,
+      .participants-title {
+        grid-column: 1 / -1;
+      }
+
+      .credits-box {
+        height: 1200px;
+      }
+
+      .credits-track {
+        animation-duration: 3000s;
+      }
     }
   </style>
 </head>
 
 <body>
 
+<!-- Welcome -->
 <div id="welcome-screen">
   <div class="welcome-content">
     <h1>Welcome to <br>Annie Besant School</h1>
@@ -102,20 +224,66 @@
 <div class="wrapper">
 
   <div class="school-header">
-    <img src="School name png - Bigg.png">
+    <img src="School name png - Bigg.png" alt="School Name">
   </div>
 
+  <!-- Tabs -->
   <div class="tabs">
     <a href="GANESH-VANDANA.html" class="tab">Video</a>
     <a href="GANESH-VANDANA-PHOTOS.html" class="tab">Photos</a>
     <a href="GANESH-VANDANA-BTS.html" class="tab active">BTS</a>
   </div>
 
+  <!-- BTS Video -->
   <div class="media-card-video">
     <video src="Videos/Ganeshsaraswativandana.mp4" controls preload="metadata"></video>
   </div>
 
-  <h2>Behind the Scenes</h2>
+  <h2 class="participants-title">Participants</h2>
+
+  <!-- Credits -->
+  <div class="credits-box">
+    <div class="fade top"></div>
+    <div class="fade bottom"></div>
+
+    <div class="credits-track">
+      <div class="credits-content">
+        <p>SHREYA SONI - IX A</p>
+        <p>KARNIKA PAWAR - IX A</p>
+        <p>AARNA GUPTA - VI B</p>
+        <p>AVNI SONI - IX A</p>
+        <p>ANSHIKA GUPTA - VI B</p>
+        <p>AASHI SHARMA - IX A</p>
+        <p>ANUSHREE SEVORE - VII A</p>
+        <p>UNNATI SRIVASTAVA - IX B</p>
+        <p>AVIKA BHAND - VII A</p>
+        <p>PRATHA PANDYA - IX B</p>
+        <p>DARSHIKA VERMA - VII A</p>
+        <p>AARNA KULKARNI - IX B</p>
+        <p>DIVYANSHI KAMLODIYA - VII A</p>
+        <p>SHIVANI SABLANI - IX B</p>
+        <p>NAVYA BHARDWAJ - VII A</p>
+        <p>PURVA AGRAWAL - IX B</p>
+        <p>SHAGUN NAGAR - VII A</p>
+        <p>KANIKA MANDLIWAL - IX B</p>
+        <p>SANVI PANCHAL - VII A</p>
+        <p>AAYUSHI SURWADE - IX C (LKPS)</p>
+        <p>SAYEE RANA - VII A</p>
+        <p>PRANJAL SHARMA - IX B</p>
+        <p>UTSAVI TRIVADI - VII B</p>
+        <p>ARJIT ADBHAI - IX B</p>
+        <p>KAUSHIKI GURJAR - VIII B</p>
+        <p>R. NEEL - IX B</p>
+        <p>SHREYA TIWARI - VIII B</p>
+        <p>RONAK JAISWAL - IX B</p>
+        <p>YAMINI LIKHITAKAR - VIII B</p>
+        <p>VAIDIK PARMAR - IX B</p>
+        <p>RAKSHIKA GUPTA - IX A</p>
+        <p>KINJAL VISHWAKARMA - IX B</p>
+        <p>SUJEET SHAH - IX A</p>
+      </div>
+    </div>
+  </div>
 
 </div>
 </body>
