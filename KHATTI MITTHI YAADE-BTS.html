@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khatti Meethi Yaaden</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#welcome-screen{
+  position:fixed;
+  inset:0;
+  background:#150031;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  animation:hideWelcome 1s ease forwards;
+  animation-delay:2.5s;
+}
+
+.welcome-content{
+  text-align:center;
+  animation:welcomePop 2s ease forwards;
+}
+
+.welcome-content h1,
+.welcome-content p{
+  font-family: 'Allura', cursive;
+}
+
+.welcome-content h1{
+  font-size:52px;
+  color:#ffdfb3;
+  margin-bottom:14px;
+}
+
+.welcome-content p{
+  font-size:66px;
+}
+
+@keyframes welcomePop{
+  0%{ opacity:0; transform:scale(0.8); }
+  100%{ opacity:1; transform:scale(1); }
+}
+
+@keyframes hideWelcome{
+  to{ opacity:0; visibility:hidden; }
+}
+
+
+body{
+  min-height:100vh;
+  background:#150031;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+}
+
+
+.wrapper{
+  width:100%;
+  max-width:420px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+
+.school-header{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.school-header img{
+  max-width:100%;
+  height:auto;
+}
+
+
+.video-box{
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.video-box video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+
+.image-scroll{
+  overflow-x:auto;
+  scrollbar-width: none;
+
+}
+
+.image-track{
+  display:flex;
+  gap:14px;
+}
+
+.image-track img{
+  width:160px;
+  height:90px;
+  object-fit:cover;
+  border-radius:8px;
+  flex-shrink:0;
+}
+
+
+.participants-title{
+  text-align:center;
+  font-size:22px;
+  font-weight:600;
+  color:bisque;
+}
+
+.credits-box{
+  position:relative;
+  height:240px;
+  background:rgba(0,0,0,0.55);
+  border-radius:12px;
+  overflow:hidden;
+}
+
+
+.fade{
+  position:absolute;
+  left:0;
+  right:0;
+  height:40px;
+  z-index:2;
+}
+
+.fade.top{
+  top:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+}
+
+.fade.bottom{
+  bottom:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+}
+
+
+.credits-track{
+  position:absolute;
+  width:100%;
+  animation:scrollCredits 20s linear infinite;
+}
+
+.credits-content{
+  padding:30px 20px;
+  Text-align:center;
+}
+
+.credits-content h3{
+  font-size:20px;
+  margin-bottom:18px;
+  color:#ffdfb3;
+}
+
+.credits-content p{
+  margin:6px 0;
+  font-size:14px;
+  opacity:0.9;
+}
+
+@keyframes scrollCredits{
+  0%{ transform:translateY(0); }
+  100%{ transform:translateY(-100%); }
+}
+
+@media(min-width:1024px){
+  .wrapper{
+    max-width:1200px;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:26px;
+  }
+
+  .school-header{ grid-column:1/-1; }
+  .participants-title{ grid-column:1/-1; }
+
+  .credits-box{
+    height:1200px;
+  }
+
+  .credits-track{
+    animation-duration:3000s;
+  }
+}
+</style>
+</head>
+
+<body>
+
+
+<div id="welcome-screen">
+  <div class="welcome-content">
+    <h1>Welcome to  <br>Annie Besant School</h1>
+    <p>Rewind 25</p>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <div class="school-header">
+    <img src="School name png - Bigg.png" alt="School Name">
+  </div>
+
+  <div class="video-box">
+    <video src="Videos/KhattiMeethiYaadein.mp4" autoplay loop controls></video>
+  </div>
+<h2>Khatti Meethi Yaaden</h2>
+  <div class="image-scroll">
+    <div class="image-track">
+        <a href="ABHIVYAKTI.html"><img src="/Thumbnails/Abhivyakti.png"></a>
+      	<a href="BACHPAN KE SAPNE.html"><img src="/Thumbnails/BachpanKeSapne.png"></a>
+        <a href="ENGLISH PLAY.html"><img src="/Thumbnails/EnglishDrama.png"></a>
+        <a href="FESTIVALS OF INDIA.html"><img src="/Thumbnails/FestivalsOfIndia.png"></a>
+        <a href="GANESH VANADANA .html"><img src="/Thumbnails/GaneshSaraswatiVandana.png"></a>
+        <a href="GRAND FINALE .html"><img src="/Thumbnails/GrandFinale.png"></a>
+        <a href="GURU KA ASHIRWAD.html"><img src="/Thumbnails/HindiDrama.png"></a>
+        <a href="INCREDIBLE INDIA.html"><img src="/Thumbnails/IncredibleIndia.png"></a>
+        <a href="KHATTI MITTHI YAADE.html"><img src="/Thumbnails/KhattiMeethi.png"></a>
+        <a href="MIME.html"><img src="/Thumbnails/Mime.png"></a>
+        <a href="ORCHESTRA.html"><img src="/Thumbnails/Music.png"></a>
+        <a href="SCHOOL DAYS.html"><img src="/Thumbnails/SchoolDays.png"></a>
+        <a href="SPORTS.html"><img src="/Thumbnails/Sports.png"></a>
+        <a href="TRIBUTE TO MOTHER.html"><img src="/Thumbnails/TributeToMother.png"></a>
+        <a href="WELCOME DANCE MAGIC OF CHILDHOOD.html"><img src="/Thumbnails/Welcome.png"></a>
+        <a href="demo web .html"><img src="/Thumbnails/IT.png"></a>
+    </div>
+  </div>
+
+  <h2 class="participants-title">Participants</h2>
+
+  <div class="credits-box">
+    <div class="fade top"></div>
+    <div class="fade bottom"></div>
+
+    <div class="credits-track">
+      <div class="credits-content">
+        <p>AADESH SURDKAR - II A</p>
+<p>ANSHIKA INGALE - II A</p>
+<p>ANURA BANSAL - II A</p>
+<p>AVIKA CHOUDHARY - II A</p>
+<p>BHAVESH KUMAR - II A</p>
+<p>BHEVIN GOUTAM - II A</p>
+<p>CHAHAL PANHALKAR - II A</p>
+<p>CHERIKA PATEL - II A</p>
+<p>DEVEN MEHTA - II A</p>
+<p>HARGUNDEEP KAUR - II A</p>
+<p>JHALAK MOTWANI - II A</p>
+<p>MADHAVAM SHARMA - II A</p>
+<p>MISHTI SAHU - II A</p>
+<p>PRATEEK SOLANKI - II A</p>
+<p>ROHAN JOSHI - II A</p>
+<p>SHIVANSH TRIPATHI - II A</p>
+<p>SOHAM KUMAR - II A</p>
+<p>TANISHA SHAKLE - II A</p>
+<p>VEERA PARWANI - II A</p>
+<p>VAIDEHI TIWARI - II A</p>
+
+<p>KASHVI CHOUDHARY - II B</p>
+<p>RAJ BANSAL - II B</p>
+<p>AYANSH SHARMA - II B</p>
+<p>SAMRIDDDHI TAWLI - II B</p>
+<p>CHESTA CHOUHAN - II B</p>
+<p>SIDDHARTH SAHU - II B</p>
+<p>TEJAS RAHANGOBLE - II B</p>
+<p>HITESH WALWANI - II B</p>
+<p>MITANSH CHOUDHARY - II B</p>
+<p>DIVYANSHI SINGH - II B</p>
+<p>MOKSH PATEL - II B</p>
+<p>PRINCE RAJPUT - II B</p>
+<p>RISHABH HIRVE - II B</p>
+<p>RISHI HIRVE - II B</p>
+
+<p>BHUVI PATEL - II C</p>
+<p>PRAVEEN KUMAR SONI - II C</p>
+<p>PUSHYAMITRA SHARMA - II C</p>
+<p>VIHANA CHOUHAN - II C</p>
+<p>ARIJITA BISHT - II C</p>
+<p>ARYAN DUBEY - II C</p>
+<p>RIDHVI YADAV - II C</p>
+<p>RAGHAV SHARMA - II C</p>
+<p>ANIKA MISHRA - II C</p>
+<p>NIRBHIK RAWAL - II C</p>
+<p>HARDIK MUNDRA - II C</p>
+<p>ROZAL QURESHI - II C</p>
+<p>HUNAR HANSPAL - II C</p>
+<p>RIYANKA SEETLANI - II C</p>
+<p>VINAYAK VISHWAKARMA - II C</p>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
