@@ -1,238 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WELCOME DANCE-MAGIC OF CHILDHOOD</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WELCOME DANCE - MAGIC OF CHILDHOOD | BTS</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-#welcome-screen{
-  position:fixed;
-  inset:0;
-  background:#150031;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  animation:hideWelcome 1s ease forwards;
-  animation-delay:3.5s;
-}
+    body {
+      min-height: 100vh;
+      background: #150031;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
 
-.welcome-content{
-  text-align:center;
-  animation:welcomePop 2s ease forwards;
-}
+    /* ---------- Welcome Screen ---------- */
+    #welcome-screen {
+      position: fixed;
+      inset: 0;
+      background: #150031;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: hideWelcome 1s ease forwards;
+      animation-delay: 2.5s;
+    }
 
-.welcome-content h1,
-.welcome-content p{
-  font-family: 'Allura', cursive;
-}
+    .welcome-content {
+      text-align: center;
+      animation: welcomePop 2s ease forwards;
+    }
 
-.welcome-content h1{
-  font-size:52px;
-  color:#ffdfb3;
-  margin-bottom:14px;
-}
+    .welcome-content h1,
+    .welcome-content p {
+      font-family: 'Allura', cursive;
+    }
 
-.welcome-content p{
-  font-size:66px;
-}
+    .welcome-content h1 {
+      font-size: 52px;
+      color: #ffdfb3;
+    }
 
-@keyframes welcomePop{
-  0%{ opacity:0; transform:scale(0.8); }
-  100%{ opacity:1; transform:scale(1); }
-}
+    .welcome-content p {
+      font-size: 66px;
+    }
 
-@keyframes hideWelcome{
-  to{ opacity:0; visibility:hidden; }
-}
+    @keyframes welcomePop {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
 
+    @keyframes hideWelcome {
+      to { opacity: 0; visibility: hidden; }
+    }
 
-body{
-  min-height:100vh;
-  background:#150031;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:#fff;
-}
+    /* ---------- Layout ---------- */
+    .wrapper {
+      width: 100%;
+      max-width: 420px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
 
+    .school-header {
+      display: flex;
+      justify-content: center;
+    }
 
-.wrapper{
-  width:100%;
-  max-width:420px;
-  padding:16px;
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
+    .school-header img {
+      max-width: 100%;
+    }
 
+    /* ---------- Tabs ---------- */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 6px;
+    }
 
-.school-header{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
+    .tab {
+      padding: 8px 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.12);
+      color: #ffdfb3;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
 
-.school-header img{
-  max-width:100%;
-  height:auto;
-}
+    .tab:hover {
+      background: rgba(255,255,255,0.25);
+    }
 
+    .tab.active {
+      background: #ffdfb3;
+      color: #150031;
+      font-weight: 600;
+    }
 
-.video-box{
-  width:100%;
-  aspect-ratio:16/9;
-  border-radius:10px;
-  overflow:hidden;
-}
+    /* ---------- Video ---------- */
+    .video-box {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+    }
 
-.video-box video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
+    .video-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
+    h2 {
+      text-align: center;
+      color: bisque;
+    }
 
-.image-scroll{
-  overflow-x:auto;
-  scrollbar-width: none;
+    /* ---------- Thumbnails ---------- */
+    .image-scroll {
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
 
-}
+    .image-track {
+      display: flex;
+      gap: 14px;
+    }
 
-.image-track{
-  display:flex;
-  gap:14px;
-}
+    .image-track img {
+      width: 160px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
 
-.image-track img{
-  width:160px;
-  height:90px;
-  object-fit:cover;
-  border-radius:8px;
-  flex-shrink:0;
-}
+    /* ---------- Credits ---------- */
+    .participants-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 600;
+      color: bisque;
+    }
 
+    .credits-box {
+      position: relative;
+      height: 240px;
+      background: rgba(0,0,0,0.55);
+      border-radius: 12px;
+      overflow: hidden;
+    }
 
-.participants-title{
-  text-align:center;
-  font-size:22px;
-  font-weight:600;
-  color:bisque;
-}
+    .fade {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 40px;
+      z-index: 2;
+    }
 
-.credits-box{
-  position:relative;
-  height:240px;
-  background:rgba(0,0,0,0.55);
-  border-radius:12px;
-  overflow:hidden;
-}
+    .fade.top {
+      top: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+    }
 
+    .fade.bottom {
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    }
 
-.fade{
-  position:absolute;
-  left:0;
-  right:0;
-  height:40px;
-  z-index:2;
-}
+    .credits-track {
+      position: absolute;
+      width: 100%;
+      animation: scrollCredits 14s linear infinite;
+    }
 
-.fade.top{
-  top:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
-}
+    .credits-content {
+      padding: 30px 20px;
+      text-align: center;
+    }
 
-.fade.bottom{
-  bottom:0;
-  background:linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-}
+    .credits-content p {
+      margin: 6px 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
 
+    @keyframes scrollCredits {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100%); }
+    }
 
-.credits-track{
-  position:absolute;
-  width:100%;
-  animation:scrollCredits 20s linear infinite;
-}
+    @media (min-width: 1024px) {
+      .wrapper {
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 26px;
+      }
 
-.credits-content{
-  padding:30px 20px;
-  Text-align:center;
-}
+      .school-header,
+      .participants-title {
+        grid-column: 1 / -1;
+      }
 
-.credits-content h3{
-  font-size:20px;
-  margin-bottom:18px;
-  color:#ffdfb3;
-}
+      .credits-box {
+        height: 1200px;
+      }
 
-.credits-content p{
-  margin:6px 0;
-  font-size:14px;
-  opacity:0.9;
-}
-
-@keyframes scrollCredits{
-  0%{ transform:translateY(0); }
-  100%{ transform:translateY(-100%); }
-}
-
-@media(min-width:1024px){
-  .wrapper{
-    max-width:1200px;
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:26px;
-  }
-
-  .school-header{ grid-column:1/-1; }
-  .participants-title{ grid-column:1/-1; }
-
-  .credits-box{
-    height:1200px;
-  }
-
-  .credits-track{
-    animation-duration:3000s;
-  }
-}
-</style>
+      .credits-track {
+        animation-duration: 3000s;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-
-<div id="welcome-screen">
-  <div class="welcome-content">
-    <h1>Welcome to  <br>Annie Besant School</h1>
-    <p>Rewind 25</p>
-  </div>
-</div>
-
-<div class="wrapper">
-
-  <div class="school-header">
-    <img src="School name png - Bigg.png" alt="School Name">
+  <div id="welcome-screen">
+    <div class="welcome-content">
+      <h1>Welcome to<br>Annie Besant School</h1>
+      <p>Rewind 25</p>
+    </div>
   </div>
 
-  <div class="video-box">
-    <video src="Videos/Welcome Song.mp4" autoplay loop controls></video>
-  </div>
-<h2>WELCOME DANCE-MAGIC OF CHILDHOOD</h2>
-  <div class="image-scroll">
-    <div class="image-track">
-      	<a href="ABHIVYAKTI.html"><img src="/Thumbnails/Abhivyakti.png"></a>
-	<a href="BACHPAN KE SAPNE.html"><img src="/Thumbnails/BachpanKeSapne.png"></a>
+  <div class="wrapper">
+
+    <div class="school-header">
+      <img src="School name png - Bigg.png" alt="School Name">
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <a href="WELCOME DANCE MAGIC OF CHILDHOOD.html" class="tab">Video</a>
+      <a href="https://drive.google.com/drive/folders/1xkY258LWt4Z82fMplX_QRmCM1-W2L4_P?usp=drive_link" class="tab">Photos</a>
+      <a href="WELCOME DANCE MAGIC OF CHILDHOOD - BTS.html" class="tab active">BTS</a>
+    </div>
+
+    <div class="video-box">
+      <video
+        id="btsVideo"
+        src="Videos/Welcome Song.mp4"
+        autoplay
+        playsinline
+        controls
+        preload="auto">
+      </video>
+    </div>
+
+    <h2>WELCOME DANCE - MAGIC OF CHILDHOOD – BTS</h2>
+
+    <div class="image-scroll">
+     <a href="ABHIVYAKTI.html"><img src="/Thumbnails/Abhivyakti.png"></a>
+      	<a href="BACHPAN KE SAPNE.html"><img src="/Thumbnails/BachpanKeSapne.png"></a>
         <a href="ENGLISH PLAY.html"><img src="/Thumbnails/EnglishDrama.png"></a>
         <a href="FESTIVALS OF INDIA.html"><img src="/Thumbnails/FestivalsOfIndia.png"></a>
         <a href="GANESH VANADANA .html"><img src="/Thumbnails/GaneshSaraswatiVandana.png"></a>
@@ -246,19 +283,19 @@ body{
         <a href="SPORTS.html"><img src="/Thumbnails/Sports.png"></a>
         <a href="TRIBUTE TO MOTHER.html"><img src="/Thumbnails/TributeToMother.png"></a>
         <a href="WELCOME DANCE MAGIC OF CHILDHOOD.html"><img src="/Thumbnails/Welcome.png"></a>
-        <a href="demo web .html"><img src="/Thumbnails/IT .png"></a>
+        <a href="demo web .html"><img src="/Thumbnails/IT.png"></a>
+      </div>
     </div>
-  </div>
 
-  <h2 class="participants-title">Participants</h2>
+    <h2 class="participants-title">Participants</h2>
 
-  <div class="credits-box">
-    <div class="fade top"></div>
-    <div class="fade bottom"></div>
-
-    <div class="credits-track">
-      <div class="credits-content">
-        <p>AARADHYA KANUNGO - KG II A</p>
+    <div class="credits-box">
+      <div class="fade top"></div>
+      <div class="fade bottom"></div>
+      <div class="credits-track">
+        <div class="credits-content">
+          <!-- Credits unchanged -->
+ <p>AARADHYA KANUNGO - KG II A</p>
 <p>AMAYRA GANGWANI - KG II A</p>
 <p>EHANIKA MANDLOI - KG II A</p>
 <p>GARVIT JARIYA - KG II A</p>
@@ -286,18 +323,11 @@ body{
 <p>SHIVIKA PATEL - KG II A</p>
 <p>TRISHA TAYDE - KG II A</p>
 <p>ZEESHAN KHAN - KG II A</p>
-
+        </div>
       </div>
     </div>
-  </div>
 
-</div>
+  </div>
 
 </body>
 </html>
-
-
-
-
-
-
