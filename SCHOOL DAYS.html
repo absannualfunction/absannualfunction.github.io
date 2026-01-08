@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>School Days</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
 
   <style>
@@ -25,7 +26,7 @@
       color: #fff;
     }
 
-    /* ---------- Welcome Screen ---------- */
+    /* Welcome Screen */
     #welcome-screen {
       position: fixed;
       inset: 0;
@@ -51,6 +52,7 @@
     .welcome-content h1 {
       font-size: 52px;
       color: #ffdfb3;
+      margin-bottom: 14px;
     }
 
     .welcome-content p {
@@ -58,15 +60,15 @@
     }
 
     @keyframes welcomePop {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
     @keyframes hideWelcome {
       to { opacity: 0; visibility: hidden; }
     }
 
-    /* ---------- Layout ---------- */
+    /* Layout */
     .wrapper {
       width: 100%;
       max-width: 420px;
@@ -79,24 +81,25 @@
     .school-header {
       display: flex;
       justify-content: center;
+      align-items: center;
     }
 
     .school-header img {
       max-width: 100%;
+      height: auto;
     }
 
-    /* ---------- Tabs ---------- */
+    /* Tabs */
     .tabs {
       display: flex;
-      justify-content: center;
       gap: 12px;
-      margin-top: 6px;
+      justify-content: center;
     }
 
     .tab {
       padding: 8px 18px;
       border-radius: 20px;
-      background: rgba(255,255,255,0.12);
+      background: rgba(255, 255, 255, 0.12);
       color: #ffdfb3;
       text-decoration: none;
       font-size: 14px;
@@ -104,7 +107,7 @@
     }
 
     .tab:hover {
-      background: rgba(255,255,255,0.25);
+      background: rgba(255, 255, 255, 0.25);
     }
 
     .tab.active {
@@ -113,8 +116,8 @@
       font-weight: 600;
     }
 
-    /* ---------- Video ---------- */
-    .video-box {
+    /* Video */
+    .media-card-video {
       width: 100%;
       aspect-ratio: 16 / 9;
       border-radius: 10px;
@@ -122,18 +125,13 @@
       background: #000;
     }
 
-    .video-box video {
+    .media-card-video iframe {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      border: none;
     }
 
-    h2 {
-      text-align: center;
-      color: bisque;
-    }
-
-    /* ---------- Thumbnails ---------- */
+    /* Thumbnails */
     .image-scroll {
       overflow-x: auto;
       scrollbar-width: none;
@@ -152,7 +150,7 @@
       flex-shrink: 0;
     }
 
-    /* ---------- Credits ---------- */
+    /* Credits */
     .participants-title {
       text-align: center;
       font-size: 22px;
@@ -163,7 +161,7 @@
     .credits-box {
       position: relative;
       height: 240px;
-      background: rgba(0,0,0,0.55);
+      background: rgba(0, 0, 0, 0.55);
       border-radius: 12px;
       overflow: hidden;
     }
@@ -178,12 +176,12 @@
 
     .fade.top {
       top: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
     }
 
     .fade.bottom {
       bottom: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
     }
 
     .credits-track {
@@ -204,11 +202,12 @@
     }
 
     @keyframes scrollCredits {
-      from { transform: translateY(0); }
-      to { transform: translateY(-100%); }
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-100%); }
     }
 
-    @media (min-width: 1024px) {
+    /* Desktop */
+    @media(min-width:1024px) {
       .wrapper {
         max-width: 1200px;
         display: grid;
@@ -217,6 +216,7 @@
       }
 
       .school-header,
+      .tabs,
       .participants-title {
         grid-column: 1 / -1;
       }
@@ -234,41 +234,43 @@
 
 <body>
 
+  <!-- Welcome Screen -->
   <div id="welcome-screen">
     <div class="welcome-content">
-      <h1>Welcome to<br>Annie Besant School</h1>
+      <h1>Welcome to <br>Annie Besant School</h1>
       <p>Rewind 25</p>
     </div>
   </div>
 
   <div class="wrapper">
 
+    <!-- Header -->
     <div class="school-header">
       <img src="School name png - Bigg.png" alt="School Name">
     </div>
 
-    <!-- Tabs -->
+   <!-- BUTTONS -->
     <div class="tabs">
-      <a href="ABHIVYAKTI.html" class="tab">Video</a>
-      <a href="https://drive.google.com/drive/folders/1AYBRjx8V2XDXwQJHRK2IfniyEDiomVgb?usp=drive_link" class="tab">Photos</a>
-      <a href="ABHIVYAKTI-BTS.html" class="tab active">BTS</a>
+      <a href="SCHOOL DAYS.html" class="tab active">Video</a>
+      <a href="https://drive.google.com/drive/folders/1WsL9QpLN59TeAFPbZlsg694XvuR-Wqkj?usp=drive_link" class="tab">Photos</a>
+      <a href="SCHOOL DAYS-BTS.html" class="tab">BTS</a>
     </div>
 
-    <div class="video-box">
-      <video
-        id="btsVideo"
+    <!-- Video -->
+    <div class="media-card-video">
+      <iframe
         src="https://drive.google.com/file/d/1hYDIeuwkWeNTuGOpyE0frThTev3kNfUB/preview"
-        autoplay
-        playsinline
-        controls
-        preload="auto">
-      </video>
+        title="School Days"
+        allow="autoplay"
+        allowfullscreen>
+      </iframe>
     </div>
 
     <h2>School Days</h2>
 
-    <div class="image-scroll">
-      <div class="image-track">
+    <!-- Thumbnails -->
+  <div class="image-scroll">
+    <div class="image-track">
       	<a href="ABHIVYAKTI.html"><img src="/Thumbnails/Abhivyakti.png"></a>
       	<a href="BACHPAN KE SAPNE.html"><img src="/Thumbnails/BachpanKeSapne.png"></a>
         <a href="ENGLISH PLAY.html"><img src="/Thumbnails/EnglishDrama.png"></a>
@@ -285,18 +287,19 @@
         <a href="TRIBUTE TO MOTHER.html"><img src="/Thumbnails/TributeToMother.png"></a>
         <a href="WELCOME DANCE MAGIC OF CHILDHOOD.html"><img src="/Thumbnails/Welcome.png"></a>
         <a href="demo web .html"><img src="/Thumbnails/IT.png"></a>
-      </div>
     </div>
+  </div>
 
     <h2 class="participants-title">Participants</h2>
 
+    <!-- Credits -->
     <div class="credits-box">
       <div class="fade top"></div>
       <div class="fade bottom"></div>
       <div class="credits-track">
         <div class="credits-content">
-          <!-- Credits unchanged -->
-        <p>DHARV RATHORE - I A</p>
+          <!-- unchanged participant list -->
+         <p>DHARV RATHORE - I A</p>
 <p>SHIVANK GUPTA - I A</p>
 <p>ARADHYA SEN - I A</p>
 <p>SARTHAK SAHU - I A</p>
@@ -361,7 +364,7 @@
     </div>
 
   </div>
-
 </body>
 </html>
+
 
